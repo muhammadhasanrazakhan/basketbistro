@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+a,
+span,
+input,
+textarea,
+button {
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+section,
+div {
+  margin: 0;
+  padding: 0;
+}
+
+p,
+li,
+a,
+span,
+input,
+textarea,
+button {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  font-family: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.order__pending {
+  color: #f97316 !important;
+  font-weight: 500;
+}
+
+.order__rejected {
+  color: #ef4444 !important;
+  font-weight: 500;
+}
+
+.order__shipped {
+  color: #10b981 !important;
+  font-weight: 500;
+}
+
+.order__processing {
+  color: #6366f1 !important;
+  font-weight: 500;
+}
+
+#banner .carousel-indicators button {
+  background-color: #10b981a8 !important;
+  width: 3px !important;
+  padding: 3px !important;
+  border-radius: 50% !important;
+  border: 1px solid #10b981 !important;
+}
+
+#banner .carousel-control-prev,
+#banner .carousel-control-next {
+  display: none !important;
+}
+
+.offCanvas__header {
+  background-color: #eef2ff;
+  position: relative;
+}
+
+.offCanvas__header .offcanvas-title {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  color: #000;
+  align-self: center;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.offCanvas__header .offcanvas-title svg {
+  margin-right: 10px;
+}
+
+.popover-body {
+  padding: 10px !important;
+}
+
+.fa-fedex,
+.fa-ups {
+  font-size: 27px !important;
+}
+
+table {
+  text-align: center;
+}
+
+table tbody {
+  border-top: 1px solid currentColor !important;
+}
+
+table tbody tr td {
+  padding: 11px 0 !important;
+}
+
+#testimonial__slider__container .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+  margin: 0 8px !important;
+}
+
+#testimonial__slider__container .swiper-pagination .swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+#testimonial__slider__container .swiper-pagination-bullet-active {
+  background-color: green !important;
+}
+

@@ -1,0 +1,99 @@
+.mainContainer {
+  margin: 50px 170px;
+}
+
+.childContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #F9FAFB;
+}
+.invoiceTopNest {
+  text-align: right; 
+}
+.invoiceBottom {
+  display: flex; 
+  flex-direction: row; 
+  justify-content: space-between; 
+  padding-top: 1rem;
+}
+.entryTable {
+  overflow: hidden; 
+  overflow-x: visible; 
+  padding: 0 2rem; 
+  margin: 2.5rem 0rem;
+}
+.priceDetails {
+  display: flex; 
+  flex-direction: row; 
+  justify-content: space-between; 
+  padding-top: 4px; 
+}
+.listArea {
+  min-width:100%;
+}
+.listArea textarea {
+  width:100%;
+  border: none;
+  padding: 10px;
+  font-family: inherit;
+  
+}
+.customTable {
+  min-width: max-content; 
+}
+.tablesWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .mainContainer {
+    margin: 50px 100px;
+  }  
+}
+
+@media only screen and (max-width: 1000px) {
+  .mainContainer {
+    margin: 40px 50px;
+  }  
+}
+
+@media only screen and (max-width: 768px) {
+  .mainContainer {
+    margin: 0px 20px;
+  }  
+  .childContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .invoiceTopNest {
+    text-align: left; 
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .mainContainer {
+    margin: 50px 5px;
+  }  
+  .invoiceBottom {
+    flex-direction: column; 
+    justify-content: center;
+    row-gap: 10px;
+  }
+  .entryTable {
+    padding: 0 0.5rem; 
+    margin: 1rem 0rem;
+  }
+  .priceDetails {
+    flex-direction: column; 
+    justify-content: center; 
+    row-gap: 10px;
+  }
+  
+}

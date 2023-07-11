@@ -1,0 +1,27 @@
+#terms__condition {
+  margin: 100px auto;
+}
+
+#terms__condition h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+  margin: 40px 0 20px 0;
+}
+
+#terms__condition p {
+  font-size: 16px;
+  line-height: 28px;
+  color: #6b7280;
+}
+
+#terms__condition p a {
+  color: #10b981;
+  font-weight: 600;
+  margin-left: 20px;
+}
+@media only screen and (max-width: 768px) {
+  #terms__condition {
+    margin: 20px auto;
+  }
+}

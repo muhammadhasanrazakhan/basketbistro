@@ -1,0 +1,157 @@
+#manage__orders {
+  padding: 20px 37px;
+  background-color: #fff;
+  box-shadow: 0 0 1px #333;
+  border-radius: 5px;
+}
+
+#manage__orders h1 {
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 28px;
+  color: #000;
+}
+
+#manage__orders table {
+  margin-top: 30px;
+}
+
+.placeholder__text {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.placeholder__text .placeholder__image {
+  padding: 23px 25px;
+  border-radius: 50%;
+  background-color: #d1fae5;
+}
+
+.placeholder__text h6 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  color: #374151;
+  margin: 15px 0 10px 0;
+}
+
+.placeholder__text p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #6b7280;
+}
+
+.delete__icon {
+  color: #ef4444;
+  cursor: pointer;
+}
+
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.btn-modal {
+  padding: 10px 20px;
+  display: block;
+  margin: 100px auto 0;
+  font-size: 18px;
+}
+
+.modal, .overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(49,49,49,0.8);
+}
+
+.modalcontent {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #f1f1f1;
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+}
+.modalcontent h1 {
+  margin-bottom: 20px;
+}
+
+.closemodal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 7px;
+}
+
+.inputs {
+  position: relative;
+}
+
+.modal .inputs label {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.modal input {
+  width: 100%;
+  padding: 9px 50px;
+  border: 1px solid #10b981;
+  border-radius: 5px;
+  outline: 0;
+  font-family: inherit;
+}
+
+.modal input::-webkit-outer-spin-button,
+.modal input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.modal input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.modal input::placeholder {
+  color: rgba(51, 51, 51, 0.411);
+  font-family: inherit;
+}
+
+.btn__wrapper {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.btn__wrapper button {
+  padding: 8px 40px;
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  background-color: #10b981;
+  color: #fff;
+  font-family: inherit;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 768px) {
+  #manage__orders {
+    padding: 20px 17px;
+  }
+}

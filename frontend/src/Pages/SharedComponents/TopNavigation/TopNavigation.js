@@ -34,6 +34,7 @@ import Logo from '../../../assets/images/Logo.png';
 import HeaderLogo from '../../../assets/images/HeaderLogo.png';
 import menuBarIcon from '../../../assets/images/menuBar.svg';
 import notifyIcon from '../../../assets/images/notifyIcon.svg';
+import homeIcon from '../../../assets/images/homeIcon.svg';
 import privacyIcon from '../../../assets/images/privacy.svg';
 import searchIcon from '../../../assets/images/search.svg';
 import termsIcon from '../../../assets/images/terms.svg';
@@ -402,7 +403,7 @@ const TopNavigation = () => {
             </span>
 
             <span className={styles.mobile__menu__icons}>
-              <img src={notifyIcon} alt='notifyIcon' />
+              <img src={homeIcon} alt='homeIcon' onClick={() => navigate('/home')}/>
             </span>
 
             <span className={styles.mobile__menu__icons} id={styles.mobile__cart}>
@@ -410,8 +411,8 @@ const TopNavigation = () => {
               <span>{cartItems.length}</span>
             </span>
 
-            <span className={styles.mobile__menu__icons}>
-              {!isAuthenticated ? <img src={userIcon} alt='userIcon' onClick={() => navigate('/login')} /> : <ProfileDetails comefrom={"mobile"}/>}
+            <span className={styles.mobile__menu__icons} style={isAuthenticated ? { transform: 'translateY(-7px)' } : {marginBottom:'14px'}}>
+              {!isAuthenticated ? <img src={userIcon} alt='userIcon' onClick={() => navigate('/login')}/> : <ProfileDetails comefrom={"mobile"}/>}
               </span>
             <Offcanvas show={show} onHide={handleClose} placement='end' scroll={true}>
               <Offcanvas.Header closeButton className='offCanvas__header'>
@@ -465,25 +466,25 @@ const TopNavigation = () => {
               <Offcanvas.Body className={styles.mobile__offCanvas__body}>
                 <ul>
                   <li>
-                    <NavLink to='/offer' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    <NavLink to='/offer' onClick={handleMenuClose} className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <img src={offerIcon} alt='offerIcon' /> Offer
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to='/checkout' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    <NavLink to='/checkout' onClick={handleMenuClose} className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <img src={checkoutIcon} alt='checkoutIcon' />
                       Checkout
                     </NavLink>
                   </li>
 
                   {/* <li>
-                    <NavLink to='/faq' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    <NavLink to='/faq' onClick={handleMenuClose} className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <img src={faqIcon} alt='faqIcon' /> FAQ
                     </NavLink>
                   </li> */}
 
                   <li>
-                    <NavLink to='/dashboard' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    <NavLink to='/dashboard' onClick={handleMenuClose} className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <span style={{marginRight:"15px", marginLeft:"0px"}}>
                       <FontAwesomeIcon icon={faClipboardList} />
                       </span>
@@ -492,34 +493,34 @@ const TopNavigation = () => {
                   </li>
 
                   <li>
-                    <NavLink to='/about-us' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    <NavLink to='/about-us' onClick={handleMenuClose} className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <img src={aboutUsIcon} alt='aboutUsIcon' /> About Us
                     </NavLink>
                   </li>
 
                   <li>
-                    <NavLink to='/contact-us' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    <NavLink to='/contact-us' onClick={handleMenuClose} className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <img src={contactUsIcon} alt='contactUsIcon' />
                       Contact Us
                     </NavLink>
                   </li>
 
                   <li>
-                    <NavLink to='/privacy-policy' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    <NavLink to='/privacy-policy' onClick={handleMenuClose} className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <img src={privacyIcon} alt='privacyIcon' />
                       Privacy Policy
                     </NavLink>
                   </li>
 
                   <li>
-                    <NavLink to='/terms-and-conditions' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    <NavLink to='/terms-and-conditions' onClick={handleMenuClose} className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <img src={termsIcon} alt='termsIcon' />
                       Terms & Conditions
                     </NavLink>
                   </li>
 
                   <li>
-                    <NavLink to='/not-found' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    <NavLink to='/not-found' onClick={handleMenuClose} className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <img src={errorIcon} alt='errorIcon' /> 404
                     </NavLink>
                   </li>

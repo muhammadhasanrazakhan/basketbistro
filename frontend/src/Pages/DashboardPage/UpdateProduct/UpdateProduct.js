@@ -15,6 +15,7 @@ import productIcon from '../../../assets/images/icons/product.svg';
 import upload from '../../../assets/images/upload.png';
 import headerLogo from '../../../assets/images/headerLogo.svg';
 //import { postProductAsync } from '../../../redux/feathers/productsSlice';
+import LoadingSpinner from '../../SharedComponents/LoadingSpinner/LoadingSpinner';
 import { UPDATE_PRODUCT_RESET } from "../../../constants/productConstants";
 import { useNavigate } from "react-router-dom";
 import { useMatch } from "react-router-dom";
@@ -45,14 +46,43 @@ const UpdateProduct = () => {
   const MAX_IMAGE_SIZE = 0.5 * 1024 * 1024;
 
   const categories = [
-    "Fruits & Vegetable",
-    "Fish & Meat",
-    "Milk & Dairy",
-    "Pharmacy",
-    "Grocery",
-    "Soup & Detergents",
-    "Baby Care & Beauty",
+    {
+      id: 1,
+      name: 'Fish & Meat',
+      linkName: 'FishandMeat',
+    },
+    {
+      id: 2,
+      name: 'Fruits & Vegetable',
+      linkName: 'FruitsandVegetable',
+    },
+    {
+      id: 3,
+      name: 'Milk & Dairy',
+      linkName: 'MilkandDairy',
+    },
+    {
+      id: 4,
+      name: 'Grocery',
+      linkName: 'Grocery',
+    },
+    {
+      id: 5,
+      name: 'Soup & Detergents',
+      linkName: 'SoupandDetergents',
+    },
+    {
+      id: 6,
+      name: 'Baby Care & Beauty',
+      linkName: 'BabyCareandBeauty',
+    },
+    {
+      id: 7,
+      name: 'Pharmacy',
+      linkName: 'Pharmacy',
+    },
   ];
+
 
   const productId = match.params.id;
 
@@ -185,6 +215,7 @@ const UpdateProduct = () => {
   return (
     <section id={styles.add__product}>
       <h3>Update Product</h3>
+      {loading ? (<LoadingSpinner />) : (
       <form 
         //encType="multipart/form-data"
         onSubmit={updateProductSubmitHandler}
@@ -208,8 +239,8 @@ const UpdateProduct = () => {
           <select onChange={(e) => setCat(e.target.value)}>
             <option value="">Change Category</option>
               {categories.map((cate) => (
-                <option key={cate} value={cate}>
-                  {cate}
+                <option key={cate.id} value={cate.linkName}>
+                  {cate.name}
                 </option>
               ))}
           </select>
@@ -235,6 +266,7 @@ const UpdateProduct = () => {
           <button type='submit' >Update Product</button>
         </span>
       </form>
+      )}
     </section>
   );
 };

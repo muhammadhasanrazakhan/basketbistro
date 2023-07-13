@@ -6,11 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import { saveShippingInfo, updateCartItems, updateListItems } from "../../actions/cartAction";
-import { createOrder, clearErrors } from "../../actions/orderAction";
+import { createOrder, clearErrors, clearNewOrder } from "../../actions/orderAction";
 import toast from 'react-hot-toast';
 //import useAuth from '../../hooks/useAuth';
 //import { postOrdersAsync } from '../../redux/feathers/ordersSlice';
 //import { emptyCart } from '../../redux/feathers/productsSlice';
+import PreLoader from '../SharedComponents/PreLoader/PreLoader';
 import Cart from '../SharedComponents/Cart/Cart';
 import Footer from '../SharedComponents/Footer/Footer';
 import TopNavigation from '../SharedComponents/TopNavigation/TopNavigation';
@@ -24,15 +25,15 @@ const CheckOutPage = () => {
   const navigate = useNavigate();
   //const cart = useSelector((state) => state.products.cart);
   const { shippingInfo, cartItems, listItems } = useSelector((state) => state.cart);
-  const { error, success } = useSelector((state) => state.newOrder);
+  const { error, order: success, order: order, loading } = useSelector((state) => state.newOrder);
   const dispatch = useDispatch();
 
   const [address, setAddress] = useState(shippingInfo.address);
   const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
   const [paymentmethod, setPaymentmethod] = useState(shippingInfo.paymentmethod);
   
-  var cartChecked = false 
-  var listChecked = false 
+  var cartChecked = false;
+  var listChecked = false;
   
 
   // const handelChange = (e) => {
@@ -55,7 +56,7 @@ const CheckOutPage = () => {
 
 
   
-  const order = {
+  const Order = {
     shippingInfo,
     orderItems: [],
     orderCustomList: "",
@@ -76,9 +77,9 @@ const CheckOutPage = () => {
     }
     if ((cartItems.length!==0 && listItems.length < 3) || (cartItems.length===0 && listItems.length > 3)) {
       if (cartItems.length !== 0) {
-        order.orderItems = cartItems
+        Order.orderItems = cartItems
       } else {
-        order.orderCustomList = listItems
+        Order.orderCustomList = listItems
       }
     }
   }, [totalPrice]);
@@ -89,19 +90,19 @@ const CheckOutPage = () => {
     if (name === 'cart') {
       if (checked) {
         cartChecked = true
-        order.orderItems = cartItems ? cartItems : [];
+        Order.orderItems = cartItems ? cartItems : [];
       } else {
-        order.orderItems = [];
+        Order.orderItems = [];
         cartChecked = false
       }
     }
     if (name === 'list') {
       if (checked) {
         listChecked = true
-        order.orderCustomList = listItems ? listItems : "";
+        Order.orderCustomList = listItems ? listItems : "";
       } else {
-        order.orderCustomList = "";
-        listChecked =false
+        Order.orderCustomList = "";
+        listChecked = false
       }
     }
   }  
@@ -109,29 +110,24 @@ const CheckOutPage = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
      
-    if (order.orderItems.length === 0 && order.orderCustomList.length < 3) {
+    if (Order.orderItems.length === 0 && Order.orderCustomList.length < 3) {
       toast.error("Please select at least one checkbox.");
       return;
     }
 
-    if (order.orderCustomList.length>3) {
-      order.totalPrice = 0
+    if (Order.orderCustomList.length>3) {
+      Order.totalPrice = 0
     }
     try {
+
+    await dispatch(createOrder(Order));
     dispatch(
       saveShippingInfo({ address, phoneNo, paymentmethod })
     );
-    dispatch(createOrder(order));
-    const newCartItems = [];
-    const newListItems = "";
-    dispatch(updateCartItems(newCartItems))
-    dispatch(updateListItems(newListItems))
-    
-    navigate('/dashboard/my-orders');
-  
-  } catch (error) {
-    toast.error(error.response.data.message);
-  }
+
+    } catch (error) {
+      toast.error("An error occurred while placing the order. Please try again later.");
+    }
   };
 
   useEffect(() => {
@@ -140,12 +136,22 @@ const CheckOutPage = () => {
       dispatch(clearErrors());
     }
 
-    // if (success) {
-    //   toast.success("Product Created Successfully");
-    //   navigate('/dashboard/my-orders');
-    //   //dispatch({ type: NEW_PRODUCT_RESET });
-    // }
-  }, [dispatch, error, alert]);
+    if (success) {
+      toast.success("Order Placed Successfully");
+
+      const newCartItems = [];
+      const newListItems = "";
+      console.log(order)
+      if (order?.order?.orderItems?.length !== 0) {
+        dispatch(updateCartItems(newCartItems))
+      }
+      if (order?.order?.orderCustomList?.length > 3) {
+        dispatch(updateListItems(newListItems))
+      }  
+      dispatch(clearNewOrder());
+      navigate('/dashboard/my-orders'); 
+    }
+  }, [dispatch, error, success, loading, alert]);
 
   // const handleSubmit = (e) => {
   //   e.preventDefault();
@@ -183,7 +189,7 @@ const CheckOutPage = () => {
 
   return (
     <>
-      <TopNavigation />
+      {loading ? (<PreLoader />) : (
       <section id={styles.checkout}>
         <Container>
           <Row>
@@ -216,11 +222,11 @@ const CheckOutPage = () => {
                   <Row className='g-4'>
                     <Col lg={12}>
                       <label htmlFor='street'>Home Address</label>
-                      <input type='text' name='street' id='street' placeholder='123 Boulevard Rd, Beverley Hills' autoComplete='off' required value={address} onChange={(e) => setAddress(e.target.value)}/>
+                      <input type='text' name='street' id='street' placeholder='Main University Rd, Johar Complex' autoComplete='off' required value={address} onChange={(e) => setAddress(e.target.value)}/>
                     </Col>
                     <Col lg={4} className='mt-4'>
                       <label htmlFor='city'>Contact No.</label>
-                      <input type='number' name='phone' id='city' placeholder='03XX-XXXXXXX' /*autoComplete='off'*/ required value={phoneNo} onChange={(e) => setPhoneNo(e.target.value)} />
+                      <input type='number' name='phone' id='city' placeholder='03XX-XXXXXXX' autoComplete='off' required value={phoneNo} onChange={(e) => setPhoneNo(e.target.value)} />
                     </Col>
                     {/* <Col lg={4} className='mt-4'>
                       <label htmlFor='country'>Your Country</label>
@@ -330,7 +336,7 @@ const CheckOutPage = () => {
           </Row>
         </Container>
       </section>
-      <Footer />
+      )}
     </>
   );
 };

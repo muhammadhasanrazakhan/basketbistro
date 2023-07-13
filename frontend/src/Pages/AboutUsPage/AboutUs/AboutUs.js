@@ -8,17 +8,17 @@ import WelcomeText from '../WelcomeText/WelcomeText';
 
 const AboutUs = () => {
   useEffect(() => {
-    document.title = 'About Us | Kacha Bazar';
+    document.title = 'About Us | Basket Bistro';
   }, []);
 
   return (
     <>
-      <TopNavigation />
+      {/* <TopNavigation /> */}
       <Banner />
       <WelcomeText />
       {/* <OurFounders /> */}
       <DailyNeeds />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

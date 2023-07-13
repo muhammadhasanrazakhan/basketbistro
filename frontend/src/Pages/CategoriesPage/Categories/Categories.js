@@ -163,7 +163,7 @@ const Categories = () => {
   // }
 
   useEffect(() => {
-    document.title = 'All Categories | Kacha Bazar';
+    document.title = 'All Categories | Basket Bistro';
     window.scrollTo({
       top: 0,
     });
@@ -171,7 +171,7 @@ const Categories = () => {
 
   return (
     <>
-      <TopNavigation />
+      {/* <TopNavigation /> */}
       <CartTracker />
       <section id={styles.categories}>
         <Container>
@@ -197,7 +197,7 @@ const Categories = () => {
         </Container>
       </section>
       <DailyNeeds />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

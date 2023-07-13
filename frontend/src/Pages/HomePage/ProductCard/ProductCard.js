@@ -7,7 +7,7 @@ import styles from './ProductCard.module.css';
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
-  const {  name, price, _id } = product;
+  const {  name, price, _id, images, Stock } = product;
   var quantity = 1
   //let [isOpen, setIsOpen] = useState(false);
   //const [quantity, setQuantity] = useState(1);
@@ -41,7 +41,7 @@ const ProductCard = ({ product }) => {
   // }
   
   const addToCartHandler = () => {
-    dispatch(addItemsToCart(_id, quantity));
+    dispatch(addItemsToCart(_id, name, price, images[0].url, Stock, quantity));
     toast.success("Item Added To Cart");
   };
 

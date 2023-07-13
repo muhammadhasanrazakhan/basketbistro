@@ -23,6 +23,7 @@ import {
     ORDER_DETAILS_REQUEST,
     ORDER_DETAILS_SUCCESS,
     ORDER_DETAILS_FAIL,
+    CLEAR_NEW_ORDER,
     CLEAR_ERRORS,
   } from "../constants/orderConstants";
   
@@ -45,6 +46,12 @@ import {
           loading: false,
           error: action.payload,
         };
+      case CLEAR_NEW_ORDER:
+        return {
+          ...state,
+          loading: false,
+          order: null,
+        };  
       case CLEAR_ERRORS:
         return {
           ...state,

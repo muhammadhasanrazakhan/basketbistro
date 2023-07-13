@@ -31,7 +31,7 @@ const OrderDetails = () => {
       toast.error(error);
       dispatch(clearErrors());
     }
-    if (order && order._id !== orderId) {
+    if (order && order?._id !== orderId) {
       dispatch(getOrderDetails(orderId));
     }
 
@@ -49,13 +49,13 @@ const OrderDetails = () => {
 
   return ( 
     <>
-    <TopNavigation />
+    {/* <TopNavigation /> */}
     {loading ? (
       <LoadingSpinner />
     ) : (
     <div className={styles.mainContainer}>
     <div style={{ maxWidth: "100%", margin: "0 auto", paddingTop: "10px", paddingLeft: "3px", paddingRight: "6px", paddingBottom: "6px" }}>
-      <div style={{ backgroundColor: "#e0ffe6" }} className="rounded-md mb-5 px-4 py-3">
+      <div style={{ backgroundColor: "#e0ffe6" }} className="rounded-md mb-3 px-4 py-3">
         <label>
           Thank you{" "}
           <span style={{ fontWeight: "bold", color: "#10b981" }}>
@@ -64,7 +64,7 @@ const OrderDetails = () => {
           Your order have been received !
         </label>
       </div>
-      <div style={{ backgroundColor: "#ffffff", borderRadius: "0.375rem", boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)" }}>
+      <div style={{ backgroundColor: "#fffaff", borderRadius: "0.375rem", boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)" }}>
         <div>
         <div style={{ backgroundColor: '#f3edfa', padding: "2rem", borderTopLeftRadius: "0.75rem", borderTopRightRadius: "0.75rem" }}>
           {/* <div style={{ display: "flex", flexDirection: window.innerWidth < 767 ? "column" : "row", alignItems: "center", justifyContent: "space-between", paddingBottom: "1rem", borderBottom: "1px solid #F9FAFB"}}> */}
@@ -158,7 +158,7 @@ const OrderDetails = () => {
                   Date
                 </span>
                 <span style={{ fontSize: "0.875rem", color: "#718096", display: "block" }}>
-                  <span>{order?.createdAt.slice(0, 10)}</span>
+                  <span>{order?.createdAt?.slice(0, 10)}</span>
                 </span>
               </div>
               <div style={{ marginBottom: '0.75rem' }} className="mb-3 md:mb-0 lg:mb-0 flex flex-col">
@@ -353,7 +353,7 @@ const OrderDetails = () => {
                   Total Amount
                 </span>
                 <span style={{fontSize: "2rem", fontWeight: "bold", color: "red", display: "block"}}>
-                {order?.orderCustomList?.length === 0 ? order?.totalPrice : "To Be Calculated"}
+                {(order?.orderCustomList?.length === 0 || order?.paymentInfo?.status === "Cleared") ? order?.totalPrice : "To Be Calculated"}
                 </span>
               </div>
             </div>
@@ -435,7 +435,7 @@ const OrderDetails = () => {
   // <div>asaa</div>
     )}
     <DailyNeeds />
-    <Footer />
+    {/* <Footer /> */}
     </>
   );
 }

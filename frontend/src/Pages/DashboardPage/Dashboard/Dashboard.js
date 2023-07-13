@@ -4,17 +4,12 @@ import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Outlet } from 'react-router-dom';
-//import useAuth from '../../../hooks/useAuth';
-//import { emptyCart } from '../../../redux/feathers/productsSlice';
 import DailyNeeds from '../../SharedComponents/DailyNeeds/DailyNeeds';
-import Footer from '../../SharedComponents/Footer/Footer';
-import TopNavigation from '../../SharedComponents/TopNavigation/TopNavigation';
 import toast from 'react-hot-toast';
 import { logout } from "../../../actions/userAction";
 import styles from './Dashboard.module.css';
 
 const Dashboard = () => {
-  //const { logOut, isAdmin } = useAuth();
   const dispatch = useDispatch();
   
   const { user } = useSelector((state) => state.user);
@@ -22,8 +17,6 @@ const Dashboard = () => {
   const signOut = () => {
     dispatch(logout());
     toast.success("Logout Successfully");
-  //   logOut();
-  //   dispatch(emptyCart());
   };
 
   useEffect(() => {
@@ -35,7 +28,6 @@ const Dashboard = () => {
 
   return (
     <>
-      <TopNavigation />
       <section id={styles.dashboard}>
         <Container>
           <Row>
@@ -112,7 +104,6 @@ const Dashboard = () => {
         </Container>
       </section>
       <DailyNeeds />
-      <Footer />
     </>
   );
 };

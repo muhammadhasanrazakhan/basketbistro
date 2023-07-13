@@ -13,8 +13,7 @@ import googleIcon from '../../../assets/images/login/google.svg';
 import passwordIcon from '../../../assets/images/login/password.svg';
 import userIcon from '../../../assets/images/login/user.svg';
 //import useAuth from '../../../hooks/useAuth';
-import Footer from '../../SharedComponents/Footer/Footer';
-import TopNavigation from '../../SharedComponents/TopNavigation/TopNavigation';
+import PreLoader from '../../SharedComponents/PreLoader/PreLoader';
 import styles from './Register.module.css';
 
 const Register = () => {
@@ -106,7 +105,9 @@ const Register = () => {
 
   return (
     <>
-      <TopNavigation />
+    {loading ? (
+        <PreLoader />
+      ) : (
 
       <section id={styles.register}>
         <Container>
@@ -206,7 +207,7 @@ const Register = () => {
           </form>
         </Container>
       </section>
-      <Footer />
+      )}
     </>
   );
 };

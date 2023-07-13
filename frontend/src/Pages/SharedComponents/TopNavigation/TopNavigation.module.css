@@ -237,8 +237,10 @@
 #mobile__menu {
   position: fixed;
   background-color: #10b981;
-  padding: 13px 0;
-  z-index: 9999999;
+  padding-right: 2px;
+  padding-left: 2px;
+  padding-top: 14px;
+  z-index: 999;
   bottom: 0;
   left: 0;
   right: 0;
@@ -252,7 +254,7 @@
 }
 
 .offCanvas__mobile__menu {
-  z-index: 10000000;
+  z-index: 10000;
 }
 
 #mobile__cart {
@@ -357,10 +359,12 @@
 
   #header__top {
     position: fixed;
-    z-index: 9999999;
+    z-index: 999;
     left: 0;
     top: 0;
     right: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
 

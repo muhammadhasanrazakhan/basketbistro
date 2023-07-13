@@ -17,7 +17,7 @@ const TermsAndCondition = () => {
 
   return (
     <>
-      <TopNavigation />
+      {/* <TopNavigation /> */}
       <Banner />
       <Container id={styles.terms__condition}>
         <h3> Welcome to Basket Bistro!</h3>
@@ -83,7 +83,7 @@ const TermsAndCondition = () => {
         </p>
       </Container>
       <DailyNeeds />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

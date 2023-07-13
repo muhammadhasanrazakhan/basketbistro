@@ -20,6 +20,7 @@ import {
     ORDER_DETAILS_REQUEST,
     ORDER_DETAILS_SUCCESS,
     ORDER_DETAILS_FAIL,
+    CLEAR_NEW_ORDER,
     CLEAR_ERRORS,
   } from "../constants/orderConstants";
   
@@ -38,8 +39,12 @@ import {
       const { data } = await axios.post("/api/bb/order/new", order, config);
   
       dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
+      if (order?.orderItems?.length !== 0) {
       localStorage.setItem("cartItems", JSON.stringify([]));
+      }
+      if (order?.orderCustomList?.length > 3) {
       localStorage.setItem("listItems", JSON.stringify(""));
+      }
     } catch (error) {
       dispatch({
         type: CREATE_ORDER_FAIL,
@@ -161,6 +166,11 @@ import {
         payload: error.response.data.message,
       });
     }
+  };
+
+  // Clearing New Order
+  export const clearNewOrder = () => async (dispatch) => {
+    dispatch({ type: CLEAR_NEW_ORDER });
   };
   
   // Clearing Errors

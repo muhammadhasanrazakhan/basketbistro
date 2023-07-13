@@ -19,7 +19,8 @@ const Cart = ({ pd }) => {
     if (stock <= quantity) {
       return;
     }
-    dispatch(addItemsToCart(id, newQty));
+    dispatch(addItemsToCart(id, pd.name, pd.price, pd.image, pd.stock, newQty));
+    
   };
 
   const decreaseQuantity = (id, quantity) => {
@@ -27,7 +28,7 @@ const Cart = ({ pd }) => {
     if (1 >= quantity) {
       return;
     }
-    dispatch(addItemsToCart(id, newQty));
+    dispatch(addItemsToCart(id, pd.name, pd.price, pd.image, pd.stock, newQty));
   };
 
   const deleteCartItems = (id) => {

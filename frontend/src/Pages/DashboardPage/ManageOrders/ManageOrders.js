@@ -32,7 +32,7 @@ const ManageOrders = () => {
   // }, [dispatch]);
 
   const { error, orders, loading } = useSelector((state) => state.allOrders);
-  const { error: deleteError, isDeleted } = useSelector((state) => state.order);
+  const { error: deleteError, isDeleted, loading : deleteloading } = useSelector((state) => state.order);
   const { error: updateError, isUpdated, isPaymentUpdated } = useSelector((state) => state.order);
   //const orders = useSelector((state) => state.orders);
 
@@ -132,11 +132,11 @@ const ManageOrders = () => {
   return (
     <section id={styles.manage__orders}>
       <h1>Manage Order</h1>
-      {loading ? (
+      {(loading || deleteloading) ? (
         <LoadingSpinner />
       ) : (
         <>
-          {!orders.length ? (
+          {!orders?.length ? (
             <div className={styles.placeholder__text}>
               <span className={styles.placeholder__image}>
                 <svg stroke='currentColor' fill='#10b981 ' strokeWidth='0' viewBox='0 0 512 512' height='30px' width='30px' xmlns='http://www.w3.org/2000/svg'>
@@ -160,7 +160,7 @@ const ManageOrders = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {orders.map((order, idx) => (
+                  {orders?.map((order, idx) => (
                     <tr key={order._id}>
                       
                       <td>&nbsp;{idx + 1}&nbsp;</td>

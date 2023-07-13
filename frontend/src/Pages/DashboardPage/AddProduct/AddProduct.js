@@ -9,6 +9,7 @@ import price from '../../../assets/images/icons/price.svg';
 import product from '../../../assets/images/icons/product.svg';
 import upload from '../../../assets/images/upload.png';
 import headerLogo from '../../../assets/images/headerLogo.svg';
+import LoadingSpinner from '../../SharedComponents/LoadingSpinner/LoadingSpinner';
 //import { postProductAsync } from '../../../redux/feathers/productsSlice';
 import { NEW_PRODUCT_RESET } from "../../../constants/productConstants";
 import { useNavigate } from "react-router-dom";
@@ -31,13 +32,41 @@ const AddProduct = () => {
   const MAX_IMAGE_SIZE = 0.5 * 1024 * 1024;
 
   const categories = [
-    "Fruits & Vegetable",
-    "Fish & Meat",
-    "Milk & Dairy",
-    "Pharmacy",
-    "Grocery",
-    "Soup & Detergents",
-    "Baby Care & Beauty",
+    {
+      id: 1,
+      name: 'Fish & Meat',
+      linkName: 'FishandMeat',
+    },
+    {
+      id: 2,
+      name: 'Fruits & Vegetable',
+      linkName: 'FruitsandVegetable',
+    },
+    {
+      id: 3,
+      name: 'Milk & Dairy',
+      linkName: 'MilkandDairy',
+    },
+    {
+      id: 4,
+      name: 'Grocery',
+      linkName: 'Grocery',
+    },
+    {
+      id: 5,
+      name: 'Soup & Detergents',
+      linkName: 'SoupandDetergents',
+    },
+    {
+      id: 6,
+      name: 'Baby Care & Beauty',
+      linkName: 'BabyCareandBeauty',
+    },
+    {
+      id: 7,
+      name: 'Pharmacy',
+      linkName: 'Pharmacy',
+    },
   ];
 
   const handleImageUpload = (e) => {
@@ -182,6 +211,7 @@ const AddProduct = () => {
   return (
     <section id={styles.add__product}>
       <h3>Add Product</h3>
+      {loading ? (<LoadingSpinner />) : (
       <form 
         //encType="multipart/form-data"
         onSubmit={createProductSubmitHandler}
@@ -205,8 +235,8 @@ const AddProduct = () => {
           <select onChange={(e) => setCat(e.target.value)}>
             <option value="">Choose Category</option>
               {categories.map((cate) => (
-                <option key={cate} value={cate}>
-                  {cate}
+                <option key={cate.id} value={cate.linkName}>
+                  {cate.name}
                 </option>
               ))}
           </select>
@@ -232,6 +262,7 @@ const AddProduct = () => {
           <button type='submit'>Add Product</button>
         </span>
       </form>
+      )}
     </section>
   );
 };

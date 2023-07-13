@@ -8,7 +8,6 @@ import {
   newUserReview,
 } from "../../../actions/userAction";
 import { useSelector, useDispatch } from "react-redux";
-
 import emailIcon from '../../../assets/images/login/email.svg';
 import userIcon from '../../../assets/images/login/user.svg';
 import { NEW_USER_REVIEW_RESET } from "../../../constants/userConstants";

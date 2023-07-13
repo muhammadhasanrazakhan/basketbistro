@@ -26,8 +26,10 @@ const Products = () => {
       toast.error(error);
       dispatch(clearErrors());
     }
+    if (products?.length === 0) {
     dispatch(getProduct());
-  }, [dispatch,alert]);
+    }
+  }, []);
 
   return (
     <section id={styles.products}>
@@ -35,9 +37,10 @@ const Products = () => {
         <h3>Popular Products for Daily Shopping</h3>
         <p>See all our popular products in this week. You can choose your daily needs products from this list and get some special offer with free shipping.</p>
         <div className={styles.products__container}>
-          {products.slice(0, 20)?.map((product) => (
+          {products?.slice(0, 20)?.map((product) => (
             <ProductCard key={product._id} product={product} />
           ))}
+          
           <div className={styles.add__list__box} onClick={() => navigate('/addcustomlist')}>
             <span className={styles.card__img}>
               <FontAwesomeIcon icon={faPlus} />

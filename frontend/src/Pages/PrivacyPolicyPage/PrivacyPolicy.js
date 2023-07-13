@@ -15,7 +15,7 @@ const PrivacyPolicy = () => {
   }, []);
   return (
     <>
-      <TopNavigation />
+      {/* <TopNavigation /> */}
       <Banner />
       <Container id={styles.privacy__policy}>
         <h3> Last updated: June 30, 2023</h3>
@@ -107,7 +107,7 @@ const PrivacyPolicy = () => {
         </p>
       </Container>
       <DailyNeeds />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

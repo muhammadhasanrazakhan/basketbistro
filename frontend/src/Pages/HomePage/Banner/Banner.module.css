@@ -1,5 +1,5 @@
 .banner {
-  margin-top: 30px;
+  margin-top: 20px;
   height: 300px;
   overflow: hidden;
 }
@@ -90,7 +90,7 @@
 
 @media only screen and (max-width: 600px) {
   .banner {
-    margin-top: 20px;
+    margin-top: 0px;
   }
   
   .banner .carousel__item img {

@@ -19,7 +19,7 @@ const Home = () => {
 
   return (
     <>
-      <TopNavigation />
+      {/* <TopNavigation /> */}
       <Banner />
       <AboutUs />
       <FeaturedCategories />
@@ -27,7 +27,7 @@ const Home = () => {
       <CartTracker />
       <Testimonials />
       <DailyNeeds />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -18,6 +18,8 @@ import ManageProducts from './Pages/DashboardPage/ManageProducts/ManageProducts'
 import UpdateProduct from './Pages/DashboardPage/UpdateProduct/UpdateProduct';
 import MyOrders from './Pages/DashboardPage/MyOrders/MyOrders';
 import Profile from './Pages/DashboardPage/Profile/Profile';
+import TopNavigation from './Pages/SharedComponents/TopNavigation/TopNavigation';
+import Footer from './Pages/SharedComponents/Footer/Footer';
 import PreLoader from './Pages/SharedComponents/PreLoader/PreLoader';
 import ScrollToTop from './Pages/SharedComponents/ScrollToTop/ScrollToTop';
 import Home from './Pages/HomePage/Home/Home';
@@ -55,7 +57,7 @@ import { loadUser } from "./actions/userAction";
 
 function App() {
   
-  //const { isAuthenticated } = useSelector((state) => state.user);
+  const { isAuthenticated } = useSelector((state) => state.user);
 
   // if (!isAuthenticated) {
   //   localStorage.setItem("cartItems", JSON.stringify([]));
@@ -68,6 +70,7 @@ function App() {
   
   return (
     <BrowserRouter>
+      <TopNavigation />
       <ScrollToTop />
       <Toaster />
       {/* <Suspense fallback={<PreLoader />}> */}
@@ -166,6 +169,7 @@ function App() {
           <Route exact path='*' element={<NotFoundPage />} />
         </Routes>
       {/* </Suspense> */}
+      <Footer />
     </BrowserRouter>
   );
 }

@@ -60,7 +60,7 @@ const MyOrders = () => {
         <LoadingSpinner />
       ) : (
         <>
-          {!orders.length ? (
+          {!orders?.length ? (
             <div className={styles.placeholder__text}>
               <span className={styles.placeholder__image}>
                 <svg stroke='currentColor' fill='#10b981 ' strokeWidth='0' viewBox='0 0 512 512' height='30px' width='30px' xmlns='http://www.w3.org/2000/svg'>
@@ -85,7 +85,7 @@ const MyOrders = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {orders.map((order, idx) => (
+                  {orders?.map((order, idx) => (
                     <tr key={order._id}>
                       <td className='fw-bold'>&nbsp;{idx + 1}&nbsp;</td>
                       <td style={{whiteSpace:"nowrap"}}>&nbsp;{order.createdAt.slice(0, 10)}&nbsp;</td>

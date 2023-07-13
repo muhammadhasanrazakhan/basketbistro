@@ -90,6 +90,17 @@
     font-weight: 600;
   }
 
+  @media only screen and (max-width: 768px) {
+    #add__review {
+      padding: 0px 22px;
+      padding-top: 50px;
+    }
+    #add__review form button {
+      padding: 11px 25px;
+      font-weight: 600;
+    }
+  }
+
   @media only screen and (max-width: 380px) {
     #add__review {
       padding: 20px 22px;

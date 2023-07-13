@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, resetPassword } from "../../../actions/userAction";
 import Footer from '../../SharedComponents/Footer/Footer';
 import TopNavigation from '../../SharedComponents/TopNavigation/TopNavigation';
+import PreLoader from '../../SharedComponents/PreLoader/PreLoader';
 import toast from 'react-hot-toast';
 import { useNavigate, useMatch } from "react-router-dom";
 import styles from './NewPassword.module.css';
@@ -53,7 +54,9 @@ const NewPassword = () => {
 
   return (
     <>
-      <TopNavigation />
+    {loading ? (
+      <PreLoader />
+      ) : (
       <Container className={styles.reset__section}>
         <div className={styles.reset__container}>
           <img src={forgetPass} alt='forgetPass' className={styles.reset__img} />
@@ -96,7 +99,7 @@ const NewPassword = () => {
           </form>
         </div>
       </Container>
-      <Footer />
+      )}
     </>
   );
 };

@@ -17,7 +17,7 @@ const ContactUs = () => {
 
   return (
     <>
-      <TopNavigation />
+      {/* <TopNavigation /> */}
       <Banner />
       <Container id={styles.contact__page}>
         <Row>
@@ -49,7 +49,7 @@ const ContactUs = () => {
         </Row>
       </Container>
       <DailyNeeds />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

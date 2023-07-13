@@ -2,7 +2,6 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import toast from 'react-hot-toast';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import emailIcon from '../../../assets/images/login/email.svg';
 import facebookIcon from '../../../assets/images/login/facebook.svg';
@@ -10,10 +9,10 @@ import gitHubIcon from '../../../assets/images/login/gitHub.svg';
 import googleIcon from '../../../assets/images/login/google.svg';
 import passwordIcon from '../../../assets/images/login/password.svg';
 //import useAuth from '../../../hooks/useAuth';
-import Footer from '../../SharedComponents/Footer/Footer';
-import TopNavigation from '../../SharedComponents/TopNavigation/TopNavigation';
+import PreLoader from '../../SharedComponents/PreLoader/PreLoader';
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login } from "../../../actions/userAction";
+import toast from 'react-hot-toast';
 import styles from './Login.module.css';
 
 const Loginuser = () => {
@@ -50,7 +49,7 @@ const Loginuser = () => {
   const redirect = "/home";
 
   useEffect(() => {
-    document.title = 'Login | Kacha Bazar';
+    document.title = 'Login | Basket Bistro';
     window.scrollTo({
       top: 0,
     });
@@ -69,7 +68,9 @@ const Loginuser = () => {
 
   return (
     <>
-      <TopNavigation />
+    {loading ? (
+        <PreLoader />
+      ) : (
       <section id={styles.login}>
         <Container>
           <h3>Sign In!</h3>
@@ -140,7 +141,7 @@ const Loginuser = () => {
           </form>
         </Container>
       </section>
-      <Footer />
+      )}
     </>
   );
 };

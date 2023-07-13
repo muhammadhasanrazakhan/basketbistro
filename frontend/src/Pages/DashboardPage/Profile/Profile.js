@@ -18,8 +18,6 @@ const Profile = () => {
   const signOut = () => {
     dispatch(logout());
     toast.success("Logout Successfully");
-    //logOut();
-    //dispatch(emptyCart());
   };
 
   return (

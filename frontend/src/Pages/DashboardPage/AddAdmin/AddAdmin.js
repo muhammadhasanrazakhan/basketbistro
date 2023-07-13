@@ -10,6 +10,7 @@ import {
   updateUser,
   clearErrors,
 } from "../../../actions/userAction";
+import LoadingSpinner from '../../SharedComponents/LoadingSpinner/LoadingSpinner';
 import category from '../../../assets/images/icons/category.svg';
 import styles from './AddAdmin.module.css';
 
@@ -20,7 +21,7 @@ const AddAdmin = () => {
   const { error, users, loading } = useSelector((state) => state.allUsers);
   //const { loading, error, user } = useSelector((state) => state.userDetails);
   const {
-    loading: updateLoading,
+    loading: updateloading,
     error: updateError,
     isUpdated,
   } = useSelector((state) => state.profile);
@@ -37,11 +38,11 @@ const AddAdmin = () => {
     }
 
     if (isUpdated) {
-      alert.success("User Updated Successfully");
+    toast.success("User Updated Successfully");
       //navigate("/admin/users");
       dispatch({ type: UPDATE_USER_RESET });
     } 
-  }, [dispatch, alert, error, isUpdated, updateError]);
+  }, [dispatch, error, isUpdated, updateError]);
 
   useEffect(() => {
     dispatch(getAllUsers());
@@ -101,6 +102,9 @@ const AddAdmin = () => {
     <section id={styles.add__admin}>
       <Container>
         <h1>Add Admin</h1>
+        {(loading || updateloading) ? (
+          <LoadingSpinner />
+        ) : (
         <form onSubmit={updateUserSubmitHandler}>
           <span className={styles.inputs}>
             <input
@@ -118,9 +122,10 @@ const AddAdmin = () => {
           </span>
           <button type='submit'>Add Admin</button>
         </form>
+        )}
       </Container>
     </section>
-  );
+  ); 
 };
 
 export default AddAdmin;

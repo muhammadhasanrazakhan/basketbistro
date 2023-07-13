@@ -20,3 +20,9 @@
   transition: all 0.5s;
   outline: 0;
 }
+
+@media only screen and (max-width: 767px) {
+.scroll__true {
+  display: none;
+  }
+}

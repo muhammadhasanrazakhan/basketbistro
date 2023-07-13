@@ -40,7 +40,7 @@ const CustomList = () => {
 
   return (
     <>
-    <TopNavigation />
+    {/* <TopNavigation /> */}
     <section id={styles.add__review}>
       <Container>
         <h1>Your Product List</h1>
@@ -90,7 +90,7 @@ const CustomList = () => {
       </Container>
     </section>
     <DailyNeeds />
-    <Footer />
+    {/* <Footer /> */}
     </>
   );
 };

@@ -1,5 +1,5 @@
 #welcome__text {
-  margin: 100px auto;
+  margin: 50px auto;
 }
 
 #welcome__text h3 {
@@ -67,6 +67,6 @@
 }
 @media only screen and (max-width: 767px) {
   #welcome__text {
-    margin: 40px auto;
+    margin: 20px auto;
   }
 }  

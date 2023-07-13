@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useRef, useState } from 'react';
 import { Overlay, Popover } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 //import useAuth from '../../../hooks/useAuth';
 //import { emptyCart } from '../../../redux/feathers/productsSlice';
 import profile from "../../../assets/images/Profile.png";
@@ -11,6 +12,7 @@ import toast from 'react-hot-toast';
 import styles from './ProfileDetails.module.css';
 
 const ProfileDetails = ({comefrom}) => {
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [target, setTarget] = useState(null);
   const ref = useRef(null);
@@ -22,6 +24,9 @@ const ProfileDetails = ({comefrom}) => {
     if (comefrom !== "mobile") {
     setShow(!show);
     setTarget(event.target);
+    } 
+    if (comefrom === "mobile") {
+      navigate('/dashboard');
     }
   };
 

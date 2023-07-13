@@ -22,7 +22,7 @@ const ManageProducts = () => {
     
   const {  error, products, loading } = useSelector((state) => state.products);
 
-  const { error: deleteError, isDeleted } = useSelector(
+  const { error: deleteError, isDeleted, loading: deleteloading } = useSelector(
     (state) => state.product
   );
 
@@ -53,11 +53,11 @@ const ManageProducts = () => {
   return (
     <section id={styles.my__order}>
       <h1>All Products</h1>
-      {loading ? (
+      {(loading || deleteloading) ? (
         <LoadingSpinner />
       ) : (
         <>
-          {!products.length ? (
+          {!products?.length ? (
             <div className={styles.placeholder__text}>
               <span className={styles.placeholder__image}>
                 <svg stroke='currentColor' fill='#10b981 ' strokeWidth='0' viewBox='0 0 512 512' height='30px' width='30px' xmlns='http://www.w3.org/2000/svg'>
@@ -82,7 +82,7 @@ const ManageProducts = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {products.map((product, idx) => (
+                  {products?.map((product, idx) => (
                     <tr key={product._id}>
                       <td className='fw-bold'>&nbsp;{idx + 1}&nbsp;</td>
                       <td style={{whiteSpace:"nowrap"}}>&nbsp;{product.name}&nbsp;</td>

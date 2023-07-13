@@ -1,5 +1,5 @@
 .mainContainer {
-  margin: 50px 170px;
+  margin: 0px 170px;
 }
 
 .childContainer {
@@ -79,7 +79,7 @@
 
 @media only screen and (max-width: 600px) {
   .mainContainer {
-    margin: 50px 5px;
+    margin: 30px 5px;
   }  
   .invoiceBottom {
     flex-direction: column; 

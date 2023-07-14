@@ -1,4 +1,4 @@
-import { faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faPencilAlt, faArrowsRotate } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect } from 'react';
 import { Table } from 'react-bootstrap';
@@ -30,6 +30,10 @@ const ManageProducts = () => {
     dispatch(deleteProduct(id));
   };
 
+  const reloadProducts = () => {
+    dispatch(getAdminProduct());
+  }
+
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -46,13 +50,19 @@ const ManageProducts = () => {
       //navigate("/admin/dashboard");
       dispatch({ type: DELETE_PRODUCT_RESET });
     }
-
+    if (products?.length === 0) {
     dispatch(getAdminProduct());
-  }, [dispatch, alert, error, deleteError, isDeleted]);
+    }
+  }, [dispatch, error, deleteError, isDeleted]);
 
   return (
     <section id={styles.my__order}>
-      <h1>All Products</h1>
+      <div style={{display:"flex", justifyContent:"space-between"}}>
+        <h1>All Products</h1>
+        <span style={{marginTop:"5px", marginRight:"5px"}} onClick={()=>reloadProducts()}>
+          <FontAwesomeIcon icon={faArrowsRotate} />
+        </span>
+      </div>
       {(loading || deleteloading) ? (
         <LoadingSpinner />
       ) : (
@@ -76,7 +86,6 @@ const ManageProducts = () => {
                     <th>Name</th>
                     <th>Category</th>
                     <th>Price</th>
-                    <th>Stock</th>
                     <th>Edit</th>
                     <th>Delete</th>
                   </tr>
@@ -88,7 +97,6 @@ const ManageProducts = () => {
                       <td style={{whiteSpace:"nowrap"}}>&nbsp;{product.name}&nbsp;</td>
                       <td style={{whiteSpace:"nowrap"}}>&nbsp;{product.category.replace(/and/g, " and ")}&nbsp;</td>
                       <td>&nbsp;{product.price}&nbsp;</td>
-                      <td>&nbsp;{product.Stock}&nbsp;</td>
                       <td>
                         <Link to={`/dashboard/update-product/${product._id}`}>
                           <FontAwesomeIcon icon={faPencilAlt} className={styles.delete__icon} />

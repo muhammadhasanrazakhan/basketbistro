@@ -1,4 +1,4 @@
-import { faClipboardList, faHome, faPlus, faQuoteLeft, faSignOutAlt, faTasks, faUserEdit, faUserPlus, faUserTie } from '@fortawesome/free-solid-svg-icons';
+import { faClipboardList, faHome, faPlus, faQuoteLeft, faSignOutAlt, faTasks, faUser, faUserPlus, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -79,6 +79,12 @@ const Dashboard = () => {
                         <FontAwesomeIcon icon={faClipboardList} />
                       </span>
                       Manage Products
+                    </NavLink>
+                    <NavLink to='/dashboard/manage-users' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                      <span>
+                        <FontAwesomeIcon icon={faUser} />
+                      </span>
+                      Manage Users
                     </NavLink>
                   </>
                 )}

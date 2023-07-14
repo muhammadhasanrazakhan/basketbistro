@@ -15,7 +15,11 @@ const SingleCategory = () => {
   const dispatch = useDispatch();
   //const { searchString } = useParams();
   //const Match = useMatch('/categories/:searchString');
-  
+  const {error, loading, products, filteredProductsCount} = useSelector((state) => state.products);
+  const [productsCount, setProductsCount] = useState();
+  const [Products, setProducts] = useState([]);
+
+  let filtered_Products;
   let keyword;
   let category;
   
@@ -27,7 +31,7 @@ const SingleCategory = () => {
     keyword = match?.params?.searchString
     category = ""
   }
-  const {error, loading, products, filteredProductsCount} = useSelector((state) => state.products);
+  
   //const keyword = Match?.params?.searchString;
   //const category = match?.params?.searchString
   const [currentPage, setCurrentPage] = useState(1);
@@ -35,14 +39,35 @@ const SingleCategory = () => {
   const [ratings, setRatings] = useState(0);
   // alert(category)
 
+  const filterProducts = (products, keyword1, category1) => {
+    let filteredProducts1 = [...products];
+  
+    // Perform filtering based on query parameters
+    if (keyword1 !== "") {
+      const keyword2 = keyword1.toLowerCase();
+      filteredProducts1 = filteredProducts1.filter((product) =>
+        product.name.toLowerCase().includes(keyword2)
+      );
+    }
+    if (category1 !== "") {
+      filteredProducts1 = filteredProducts1.filter(
+        (product) => product.category === category1
+      );
+    }
+    setProductsCount(filteredProducts1.length)
+    setProducts(filteredProducts1)
+    return filteredProducts1;
+  }
+
   useEffect(() => {
     if (error) {
       toast.error(error);
       dispatch(clearErrors());
     }
-    dispatch(getProduct( keyword, currentPage, price, category, ratings));
-    //alert(category)
-  }, [dispatch, keyword, currentPage, price, category, ratings, error]);
+    filtered_Products = filterProducts(products, keyword, category);
+    console.log(filtered_Products)
+    //dispatch(getProduct( keyword, currentPage, price, category, ratings));
+  }, [dispatch, keyword, currentPage, price, category, ratings, error, filtered_Products]);
 
   useEffect(() => {
     window.scrollTo({
@@ -57,11 +82,11 @@ const SingleCategory = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <>
+          <>
           {error && toast.error(error)}
           <div className='d-flex justify-content-between mb-4'>
             <h6>
-              Total <strong>{filteredProductsCount}</strong> items Found
+              Total <strong>{productsCount}</strong> items Found
             </h6>
             {/* <form onSubmit={(e) => e.preventDefault()}>
               <select name='price' onChange={(e) => dispatch(productSorting(e.target.value))}>
@@ -72,7 +97,7 @@ const SingleCategory = () => {
           </div>
 
           <div className={styles.category__container}>
-            {products?.map((product) => (
+            {Products?.map((product) => (
               <ProductCard product={product} key={product._id} />
             ))}
           </div>

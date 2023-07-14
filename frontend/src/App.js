@@ -15,6 +15,7 @@ import AddReview from './Pages/DashboardPage/AddReview/AddReview';
 import ManageOrders from './Pages/DashboardPage/ManageOrders/ManageOrders';
 import OrderDetails from './Pages/DashboardPage/OrderDetails/OrderDetails';
 import ManageProducts from './Pages/DashboardPage/ManageProducts/ManageProducts';
+import ManageUsers from './Pages/DashboardPage/ManageUsers/ManageUsers';
 import UpdateProduct from './Pages/DashboardPage/UpdateProduct/UpdateProduct';
 import MyOrders from './Pages/DashboardPage/MyOrders/MyOrders';
 import Profile from './Pages/DashboardPage/Profile/Profile';
@@ -127,6 +128,14 @@ function App() {
               element={
                 <IsAdmin>
                   <ManageProducts />
+                </IsAdmin>
+              }
+            />
+            <Route
+              exact path='/dashboard/manage-users'
+              element={
+                <IsAdmin>
+                  <ManageUsers />
                 </IsAdmin>
               }
             />

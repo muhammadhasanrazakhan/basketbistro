@@ -26,7 +26,9 @@ const Products = () => {
       toast.error(error);
       dispatch(clearErrors());
     }
+    if (products?.length === 0) {
     dispatch(getProduct());
+    }
   }, [dispatch]);
 
   return (

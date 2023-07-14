@@ -1,4 +1,4 @@
-import { faTrashAlt, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faXmark, faArrowsRotate } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
@@ -34,7 +34,7 @@ const ManageOrders = () => {
   const { error, orders, loading } = useSelector((state) => state.allOrders);
   const { error: deleteError, isDeleted, loading : deleteloading } = useSelector((state) => state.order);
   const { error: updateError, isUpdated, isPaymentUpdated } = useSelector((state) => state.order);
-  //const orders = useSelector((state) => state.orders);
+  const reversedOrders = Array.isArray(orders) ? [...orders].reverse() : [];
 
   const [modal, setModal] = useState(false);
   const [amount, setAmount] = useState();
@@ -79,13 +79,18 @@ const ManageOrders = () => {
     toast.success("Payment Updated Successfully");
     dispatch({ type: UPDATE_ORDER_PAYMENT_RESET });
   }
+  if (orders?.length === 0) {
   dispatch(getAllOrders());
+  }
 }, [dispatch, error, deleteError, isDeleted, updateError, isUpdated, isPaymentUpdated]);
 
 
   const deleteOrderHandler = (id) => {
     dispatch(deleteOrder(id));
   };
+  const reloadOrders = () => {
+    dispatch(getAllOrders());
+  }
 
   const updateOrderSubmitHandler = (id, status, purpose) => {
     //e.preventDefault();
@@ -131,7 +136,12 @@ const ManageOrders = () => {
 
   return (
     <section id={styles.manage__orders}>
-      <h1>Manage Order</h1>
+      <div style={{display:"flex", justifyContent:"space-between"}}>
+        <h1>All Orders</h1>
+        <span style={{marginTop:"5px", marginRight:"5px"}} onClick={()=>reloadOrders()}>
+          <FontAwesomeIcon icon={faArrowsRotate} />
+        </span>
+      </div>
       {(loading || deleteloading) ? (
         <LoadingSpinner />
       ) : (
@@ -152,7 +162,7 @@ const ManageOrders = () => {
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Email</th>
+                    <th>Name</th>
                     <th>Delete</th>
                     <th>Action</th>
                     <th>Shipping Status</th>
@@ -160,11 +170,11 @@ const ManageOrders = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {orders?.map((order, idx) => (
+                  {reversedOrders?.map((order, idx) => (
                     <tr key={order._id}>
                       
                       <td>&nbsp;{idx + 1}&nbsp;</td>
-                      <td>&nbsp;{order.user.email}&nbsp;</td>
+                      <td style={{whiteSpace:"nowrap"}}>&nbsp;{order.user.name}&nbsp;</td>
                       <td>
                       <Link to={`/orderdetails/${order._id}`}>
                       &nbsp;Details&nbsp;

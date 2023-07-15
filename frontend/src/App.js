@@ -27,6 +27,7 @@ import Home from './Pages/HomePage/Home/Home';
 import Loginuser from './Pages/AuthPage/LogIn/Loginuser';
 import AboutUs from './Pages/AboutUsPage/AboutUs/AboutUs';
 import Register from './Pages/AuthPage/Register/Register';
+import ChangePassword from './Pages/AuthPage/ChangePassword/ChangePassword';
 import Dashboard from './Pages/DashboardPage/Dashboard/Dashboard';
 import ContactUs from './Pages/ContactUsPage/ContactUs';
 import Categories from './Pages/CategoriesPage/Categories/Categories';
@@ -172,6 +173,14 @@ function App() {
             element={
               <RequiredAuth>
                 <CheckOutPage />
+              </RequiredAuth>
+            }
+          />
+          <Route
+            exact path='/change-password'
+            element={
+              <RequiredAuth>
+                <ChangePassword />
               </RequiredAuth>
             }
           />

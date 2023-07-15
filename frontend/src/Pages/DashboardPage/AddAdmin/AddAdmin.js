@@ -38,7 +38,7 @@ const AddAdmin = () => {
     }
 
     if (isUpdated) {
-    toast.success("User Updated Successfully");
+    toast.success("User Updated to Admin Successfully");
       //navigate("/admin/users");
       dispatch({ type: UPDATE_USER_RESET });
     } 

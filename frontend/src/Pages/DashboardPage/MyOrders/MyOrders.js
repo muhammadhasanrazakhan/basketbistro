@@ -1,9 +1,9 @@
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faArrowsRotate } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect } from 'react';
 import { Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link, useMatch } from 'react-router-dom'
 import swal from 'sweetalert';
 import { clearErrors, myOrders, deleteOrder  } from "../../../actions/orderAction";
 import toast from 'react-hot-toast';
@@ -17,23 +17,11 @@ const MyOrders = () => {
   //const { loggedInUser } = useAuth();
   const dispatch = useDispatch();  
   const { loading, error, orders } = useSelector((state) => state.myOrders);
-  //const { error: deleteError, isDeleted } = useSelector((state) => state.order);
+  const reversedOrders = Array.isArray(orders) ? [...orders].reverse() : [];
 
-  // const deleteOrderHandler = (id) => {
-  //   dispatch(deleteOrder(id));
-  // };
-
-  // const handleDeleteOrder = (id) => {
-  //   swal({
-  //     title: 'Are you sure?',
-  //     text: 'After deleted you will not be able to recover this Order!',
-  //     icon: 'warning',
-  //     buttons: true,
-  //     dangerMode: true,
-  //   }).then((willDelete) => {
-  //     willDelete ? dispatch(cancelOrdersAsync(id)) : swal('Your Order is safe!!');
-  //   });
-  // };
+  const reloadOrders = () => {
+    dispatch(myOrders());
+  };
 
   useEffect(() => {
     if (error) {
@@ -49,13 +37,25 @@ const MyOrders = () => {
   //     //navigate("/admin/orders");
   //     dispatch({ type: DELETE_ORDER_RESET });
   // }
-
+    if (orders?.length === 0) {
     dispatch(myOrders());
+    }
   }, [dispatch, error]);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  },[]) 
 
   return (
     <section id={styles.my__order}>
-      <h1>My Orders</h1>
+      <div style={{display:"flex", justifyContent:"space-between"}}>
+        <h1>My Orders</h1>
+        <span style={{marginTop:"5px", marginRight:"5px"}} onClick={()=>reloadOrders()}>
+          <FontAwesomeIcon icon={faArrowsRotate} />
+        </span>
+      </div>
       {loading ? (
         <LoadingSpinner />
       ) : (
@@ -85,7 +85,7 @@ const MyOrders = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {orders?.map((order, idx) => (
+                  {reversedOrders?.map((order, idx) => (
                     <tr key={order._id}>
                       <td className='fw-bold'>&nbsp;{idx + 1}&nbsp;</td>
                       <td style={{whiteSpace:"nowrap"}}>&nbsp;{order.createdAt.slice(0, 10)}&nbsp;</td>

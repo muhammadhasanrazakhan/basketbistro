@@ -109,7 +109,7 @@ const Footer = () => {
                   <NavLink to='/dashboard/profile'>Updated Profile</NavLink>
                 </li>
                 <li>
-                  <NavLink to='/'>Change Password</NavLink>
+                  <NavLink to='/change-password'>Change Password</NavLink>
                 </li>
               </ul>
             </Col>

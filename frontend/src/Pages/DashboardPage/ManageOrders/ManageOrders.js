@@ -34,7 +34,7 @@ const ManageOrders = () => {
   const { error, orders, loading } = useSelector((state) => state.allOrders);
   const { error: deleteError, isDeleted, loading : deleteloading } = useSelector((state) => state.order);
   const { error: updateError, isUpdated, isPaymentUpdated } = useSelector((state) => state.order);
-  const reversedOrders = Array.isArray(orders) ? [...orders].reverse() : [];
+  //const reversedOrders = Array.isArray(orders) ? [...orders].reverse() : [];
 
   const [modal, setModal] = useState(false);
   const [amount, setAmount] = useState();
@@ -170,7 +170,7 @@ const ManageOrders = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {reversedOrders?.map((order, idx) => (
+                  {orders?.map((order, idx) => (
                     <tr key={order._id}>
                       
                       <td>&nbsp;{idx + 1}&nbsp;</td>

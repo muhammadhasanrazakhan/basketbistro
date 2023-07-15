@@ -21,7 +21,7 @@ const Banner = () => {
               <div className={styles.overlay}>
                 <h3> The Best Quality Products Guaranteed!</h3>
                 <p>Dramatically facilitate effective total linkage for go forward processes...</p>
-                <button onClick={() => navigate('/categories/FishandMeat')}>Learn More</button>
+                <button onClick={() => navigate('/about-us')}>Learn More</button>
               </div>
             </Carousel.Item>
 
@@ -30,7 +30,7 @@ const Banner = () => {
               <div className={styles.overlay}>
                 <h3> Best Different Type of Grocery Store </h3>
                 <p>Quickly aggregate empowered networks after emerging products...</p>
-                <button onClick={() => navigate('/categories/FishandMeat')}>Learn More</button>
+                <button onClick={() => navigate('/about-us')}>Learn More</button>
               </div>
             </Carousel.Item>
 
@@ -39,7 +39,7 @@ const Banner = () => {
               <div className={styles.overlay}>
                 <h3> Quality Freshness Guaranteed!</h3>
                 <p>intrinsically fashion performance based products rather than accurate benefits...</p>
-                <button onClick={() => navigate('/categories/FishandMeat')}>Learn More</button>
+                <button onClick={() => navigate('/about-us')}>Learn More</button>
               </div>
             </Carousel.Item>
           </Carousel>

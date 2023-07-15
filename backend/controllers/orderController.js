@@ -65,7 +65,9 @@ exports.myOrders = catchAsyncErrors(async (req, res, next) => {
 
 // get all Orders -- Admin
 exports.getAllOrders = catchAsyncErrors(async (req, res, next) => {
-  const orders = await Order.find();
+  const orders = await Order.find()
+  .sort({ createdAt: -1 })
+  .limit(50);
 
   let totalAmount = 0;
 

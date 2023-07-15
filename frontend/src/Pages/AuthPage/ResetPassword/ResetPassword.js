@@ -70,7 +70,7 @@ const ResetPassword = () => {
               </label>
             </span>
             <div className='d-flex justify-content-end'>
-              <button type='submit'>Reset</button>
+              <button type='submit'>Submit</button>
             </div>
           </form>
         </div>

@@ -103,7 +103,8 @@
 
   @media only screen and (max-width: 380px) {
     #add__review {
-      padding: 20px 22px;
+      padding: 0px 22px;
+      padding-top: 50px;
     }
     #add__review form span {
       margin-left: 5px;

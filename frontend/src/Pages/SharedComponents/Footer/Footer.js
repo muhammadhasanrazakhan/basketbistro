@@ -42,7 +42,7 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href='tel:03111841622'>
+                  <a href='https://wa.me/923104725572?text=hello%20%2C%0A'>
                     <FontAwesomeIcon icon={faWhatsapp} />
                   </a>
                 </li>
@@ -119,7 +119,7 @@ const Footer = () => {
       <section id={styles.copyright__area} className='container'>
         <small>
           Copyright 2023 @
-          <a href='https://www.facebook.com' target='_blank' rel='noopener noreferrer' className='mx-1'>
+          <a target='_blank' rel='noopener noreferrer' className='mx-1'>
             HasanRaza
           </a>
           , All rights reserved.

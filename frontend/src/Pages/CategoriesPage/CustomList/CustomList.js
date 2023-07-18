@@ -1,5 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
@@ -43,10 +45,17 @@ const CustomList = () => {
     {/* <TopNavigation /> */}
     <section id={styles.add__review}>
       <Container>
-        <h1>Your Product List</h1>
+        <div style={{display:"flex", justifyContent:"space-between"}}>
+          <h1 style={{marginTop:"5px"}}>All Orders</h1>
+          <span style={{marginTop:"0px", marginRight:"5px"}}>
+          <a style={{color: "#10b981"}}href='https://wa.me/923104725572?text=hello%20%2C%0A' target='_blank' rel='noopener noreferrer'>
+            <FontAwesomeIcon icon={faWhatsapp} style={{ fontSize: "2rem" }}/>
+          </a>
+          </span>
+        </div>
         <form onSubmit={proceedToCheckout}>
           <Row className='g-4'>
-            <Col lg={10}>
+            <Col lg={12}>
               <div className={styles.inputs}>
                 <input
                   type='text'

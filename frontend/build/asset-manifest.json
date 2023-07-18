@@ -1,12 +1,7 @@
 {
   "files": {
-<<<<<<< HEAD
-    "main.css": "/static/css/main.70fc353e.css",
-    "main.js": "/static/js/main.8a9e3247.js",
-=======
-    "main.css": "/static/css/main.e79de293.css",
-    "main.js": "/static/js/main.f98f8d9e.js",
->>>>>>> 9a93ca65db8e7538ce5820374d143c6478f8d691
+    "main.css": "/static/css/main.b6f374c1.css",
+    "main.js": "/static/js/main.b956dbdd.js",
     "static/media/testimonials.jpg": "/static/media/testimonials.4c4768c5703d0fe66179.jpg",
     "static/media/forget-password.png": "/static/media/forget-password.cea15e951991d0e22404.png",
     "static/media/play-store.svg": "/static/media/play-store.e64bc6741c92b0e94479c5bf3b2ca31c.svg",
@@ -75,20 +70,11 @@
     "static/media/notifyIcon.svg": "/static/media/notifyIcon.7438c9f41e7a54531c17810fc27639f6.svg",
     "static/media/homeIcon.svg": "/static/media/homeIcon.8a8c603b08d0a93286f8bfc54f62ea67.svg",
     "static/media/password.svg": "/static/media/password.020b2599fae3c8c169d3e9289f13a7dd.svg",
-<<<<<<< HEAD
-    "main.70fc353e.css.map": "/static/css/main.70fc353e.css.map",
-    "main.8a9e3247.js.map": "/static/js/main.8a9e3247.js.map"
+    "main.b6f374c1.css.map": "/static/css/main.b6f374c1.css.map",
+    "main.b956dbdd.js.map": "/static/js/main.b956dbdd.js.map"
   },
   "entrypoints": [
-    "static/css/main.70fc353e.css",
-    "static/js/main.8a9e3247.js"
-=======
-    "main.e79de293.css.map": "/static/css/main.e79de293.css.map",
-    "main.f98f8d9e.js.map": "/static/js/main.f98f8d9e.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.e79de293.css",
-    "static/js/main.f98f8d9e.js"
->>>>>>> 9a93ca65db8e7538ce5820374d143c6478f8d691
+    "static/css/main.b6f374c1.css",
+    "static/js/main.b956dbdd.js"
   ]
 }

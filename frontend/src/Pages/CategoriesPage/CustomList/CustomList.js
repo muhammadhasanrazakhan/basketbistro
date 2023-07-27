@@ -30,7 +30,9 @@ const CustomList = () => {
   const addToCartHandler = (e) => {
     e.preventDefault();
     dispatch(addListToCart(list));
-    toast.success("Your list is saved");
+    toast.success("Your list is saved",{
+      duration: 1000,
+    });
   };
 
   useEffect(() => {
@@ -48,7 +50,7 @@ const CustomList = () => {
         <div style={{display:"flex", justifyContent:"space-between"}}>
           <h1 style={{marginTop:"5px"}}>All Orders</h1>
           <span style={{marginTop:"0px", marginRight:"5px"}}>
-          <a style={{color: "#10b981"}}href='https://wa.me/923104725572?text=hello%20%2C%0A' target='_blank' rel='noopener noreferrer'>
+          <a style={{color: "#10b981"}} href='https://wa.me/923104725572?text=hello%2C%20I%20have%20visited%20your%20website...%0A' target='_blank' rel='noopener noreferrer'>
             <FontAwesomeIcon icon={faWhatsapp} style={{ fontSize: "2rem" }}/>
           </a>
           </span>

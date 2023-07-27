@@ -1,5 +1,5 @@
 //import React, { lazy, Suspense, useEffect } from 'react';
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
 // import { Route, Routes } from 'react-router-dom';
 import './App.css';
@@ -11,12 +11,15 @@ import RequiredAuth from './Pages/AuthPage/RequiredAuth/RequiredAuth';
 import SingleCategory from './Pages/CategoriesPage/SingleCategory/SingleCategory';
 import AddAdmin from './Pages/DashboardPage/AddAdmin/AddAdmin';
 import AddProduct from './Pages/DashboardPage/AddProduct/AddProduct';
+import CreateOffer from './Pages/DashboardPage/CreateOffer/CreateOffer';
 import AddReview from './Pages/DashboardPage/AddReview/AddReview';
 import ManageOrders from './Pages/DashboardPage/ManageOrders/ManageOrders';
 import OrderDetails from './Pages/DashboardPage/OrderDetails/OrderDetails';
 import ManageProducts from './Pages/DashboardPage/ManageProducts/ManageProducts';
 import ManageUsers from './Pages/DashboardPage/ManageUsers/ManageUsers';
+import ManageOffers from './Pages/DashboardPage/ManageOffers/ManageOffers';
 import UpdateProduct from './Pages/DashboardPage/UpdateProduct/UpdateProduct';
+import UpdateOffer from './Pages/DashboardPage/UpdateOffer/UpdateOffer';
 import MyOrders from './Pages/DashboardPage/MyOrders/MyOrders';
 import Profile from './Pages/DashboardPage/Profile/Profile';
 import TopNavigation from './Pages/SharedComponents/TopNavigation/TopNavigation';
@@ -35,6 +38,7 @@ import CustomList from './Pages/CategoriesPage/CustomList/CustomList';
 import CheckOutPage from './Pages/CheckOutPage/CheckOutPage';
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage';
 import PrivacyPolicy from './Pages/PrivacyPolicyPage/PrivacyPolicy';
+import Offer from './Pages/OfferPage/Offer';
 import ResetPassword from'./Pages/AuthPage/ResetPassword/ResetPassword';
 import NewPassword from './Pages/AuthPage/NewPassword/NewPassword';
 import TermsAndCondition from './Pages/TermsAndConditionPage/TermsAndCondition';
@@ -66,7 +70,7 @@ function App() {
   //   localStorage.setItem("shippingInfo", JSON.stringify({}));
   // }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     store.dispatch(loadUser());
   }, []);
   
@@ -83,6 +87,7 @@ function App() {
           <Route exact path='/contact-us' element={<ContactUs />} />
           <Route exact path='/privacy-policy' element={<PrivacyPolicy />} />
           <Route exact path='/terms-and-conditions' element={<TermsAndCondition />} />
+          <Route exact path='/offer' element={<Offer />} />
           <Route exact path='/login' element={<Loginuser />} />
           <Route exact path='/register' element={<Register />} />
           <Route exact path='/reset-password' element={<ResetPassword />} />
@@ -105,6 +110,14 @@ function App() {
               element={
                 <IsAdmin>
                   <AddProduct />
+                </IsAdmin>
+              }
+            />
+            <Route
+              exact path='/dashboard/create-offer'
+              element={
+                <IsAdmin>
+                  <CreateOffer />
                 </IsAdmin>
               }
             />
@@ -141,10 +154,26 @@ function App() {
               }
             />
             <Route
+              exact path='/dashboard/manage-offers'
+              element={
+                <IsAdmin>
+                  <ManageOffers />
+                </IsAdmin>
+              }
+            />
+            <Route
               exact path='/dashboard/update-product/:id'
               element={
                 <IsAdmin>
                   <UpdateProduct />
+                </IsAdmin>
+              }
+            />
+            <Route
+              exact path='/dashboard/update-offer/:id'
+              element={
+                <IsAdmin>
+                  <UpdateOffer />
                 </IsAdmin>
               }
             />

@@ -31,12 +31,16 @@ const ResetPassword = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error, {
+        duration: 2000,
+      });
       dispatch(clearErrors());
     }
 
     if (message) {
-      toast.success(message);
+      toast.success(message, {
+        duration: 2000,
+      });
     }
   }, [dispatch, error, alert, message]);
 

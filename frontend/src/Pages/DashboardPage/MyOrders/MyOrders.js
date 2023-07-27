@@ -25,7 +25,9 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error, {
+        duration: 2000,
+      });
       dispatch(clearErrors());
     }
   //   if (deleteError) {
@@ -92,7 +94,7 @@ const MyOrders = () => {
                       <td>&nbsp;{order.shippingInfo.paymentmethod}&nbsp;</td>
                       <td>&nbsp;{order.paymentInfo.status}&nbsp;</td>
                       <td>
-                      <Link to={`/orderdetails/${order._id}`}>
+                      <Link to={`/orderdetails/${order._id}`} state={order}>
                       &nbsp;Details&nbsp;
                       </Link>
                       </td>

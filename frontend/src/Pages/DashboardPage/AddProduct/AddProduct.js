@@ -34,8 +34,8 @@ const AddProduct = () => {
   const categories = [
     {
       id: 1,
-      name: 'Fish & Meat',
-      linkName: 'FishandMeat',
+      name: 'Chicken & Meat',
+      linkName: 'ChickenandMeat',
     },
     {
       id: 2,
@@ -138,12 +138,16 @@ const AddProduct = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error, {
+        duration: 2000,
+      });
       dispatch(clearErrors());
     }
 
     if (success) {
-      toast.success("Product Created Successfully");
+      toast.success("Product Created Successfully", {
+        duration: 2000,
+      });
       navigate("/dashboard");
       dispatch({ type: NEW_PRODUCT_RESET });
     }

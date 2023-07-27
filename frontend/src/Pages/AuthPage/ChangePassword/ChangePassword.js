@@ -39,13 +39,17 @@ const ChangePassword = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error, {
+        duration: 2000,
+      });
       //alert(error);
       dispatch(clearErrors());
     }
 
     if (isUpdated) {
-        toast.success("Profile Updated Successfully");
+        toast.success("Profile Updated Successfully", {
+          duration: 2000,
+        });
   
         navigate("/home");
   

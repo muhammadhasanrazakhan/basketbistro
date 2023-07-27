@@ -30,8 +30,8 @@ const FeaturedCategories = () => {
   const categories = [
     {
       id: 1,
-      name: 'Fish & Meat',
-      linkName: 'FishandMeat',
+      name: 'Chicken & Meat',
+      linkName: 'ChickenandMeat',
       images: fish,
     },
     {

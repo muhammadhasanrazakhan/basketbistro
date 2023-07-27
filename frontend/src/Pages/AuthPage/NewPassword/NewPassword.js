@@ -38,12 +38,16 @@ const NewPassword = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error, {
+        duration: 2000,
+      });
       dispatch(clearErrors());
     }
 
     if (success) {
-      toast.success("Password Updated Successfully");
+      toast.success("Password Updated Successfully", {
+        duration: 2000,
+      });
       navigate("/login");
     }
   }, [dispatch, error, alert, success]);

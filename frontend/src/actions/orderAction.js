@@ -20,6 +20,7 @@ import {
     ORDER_DETAILS_REQUEST,
     ORDER_DETAILS_SUCCESS,
     ORDER_DETAILS_FAIL,
+    CLEAR_MY_ORDERS,
     CLEAR_NEW_ORDER,
     CLEAR_ERRORS,
   } from "../constants/orderConstants";
@@ -167,6 +168,11 @@ import {
       });
     }
   };
+
+  // Clearing My Orders
+  export const clearMyOrders = () => async (dispatch) => {
+    dispatch({ type: CLEAR_MY_ORDERS });
+  };  
 
   // Clearing New Order
   export const clearNewOrder = () => async (dispatch) => {

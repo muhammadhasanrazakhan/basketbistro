@@ -107,9 +107,9 @@ const TopNavigation = () => {
     },
     {
       id: 2,
-      name: 'Fish & Meat',
+      name: 'Chicken & Meat',
       image: fish,
-      link: '/categories/FishandMeat',
+      link: '/categories/ChickenandMeat',
     },
     // {
     //   id: 3,
@@ -271,7 +271,7 @@ const TopNavigation = () => {
 
                       <button className={styles.cart__button} onClick={handelClick} disabled={totalPrice ? false : true}>
                         Proceed To Checkout
-                        <span>${totalPrice}.00</span>
+                        <span>Rs. {totalPrice}.00</span>
                       </button>
                     </Offcanvas.Body>
                   </Offcanvas>
@@ -451,7 +451,7 @@ const TopNavigation = () => {
 
                 <button className={styles.cart__button} onClick={handelClick} disabled={totalPrice ? false : true}>
                   Proceed To Checkout
-                  <span>${totalPrice}.00</span>
+                  <span>Rs. {totalPrice}.00</span>
                 </button>
               </Offcanvas.Body>
             </Offcanvas>

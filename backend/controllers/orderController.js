@@ -2,6 +2,7 @@ const Order = require("../models/orderModel");
 const Product = require("../models/productModel");
 const User = require("../models/userModel");
 const ErrorHander = require("../utils/errorhandler");
+const sendWhatsappAlert = require("../utils/sendWhatsappAlert");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 
 // Create new Order
@@ -30,11 +31,24 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
     user: {_id:req.user._id, name:req.user.name, email:req.user.email}
   });
 
+  const message = `${req.user.name} has placed an order at your website \nCustomer Contact : ${req.body.shippingInfo.phoneNo} \nCustomer Email : ${req.user.email} \n\nManage Order on website https://jolly-spacesuits-hare.cyclic.app`;
+
+  await phoneNumber(req.user._id, shippingInfo.phoneNo);
+  await sendWhatsappAlert(message);
+
   res.status(201).json({
     success: true,
     order,
   });
 });
+
+async function phoneNumber(id, number) {
+  const user = await User.findById(id);
+
+  user.lastPhoneNumber = number;
+
+  await user.save({ validateBeforeSave: false });
+}
 
 // get Single Order
 exports.getSingleOrder = catchAsyncErrors(async (req, res, next) => {

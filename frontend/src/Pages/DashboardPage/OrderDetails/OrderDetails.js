@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import toast from 'react-hot-toast';
 import { getOrderDetails, clearErrors } from "../../../actions/orderAction";
 import { useSelector, useDispatch } from "react-redux";
-import { useMatch } from "react-router-dom";
+import { useMatch, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import LoadingSpinner from '../../SharedComponents/LoadingSpinner/LoadingSpinner';
 import DailyNeeds from '../../SharedComponents/DailyNeeds/DailyNeeds';
@@ -14,12 +14,14 @@ import Logo from '../../../assets/images/footerLogo.svg';
 import styles from './OrderDetails.module.css';
 
 const OrderDetails = () => {
-  const { order, error, loading } = useSelector((state) => state.orderDetails);
+  const { error, loading } = useSelector((state) => state.orderDetails);
   const { cartItems, listItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const navigate  = useNavigate()
+  const location = useLocation();
   const match = useMatch('/orderdetails/:id');
   const orderId = match.params.id
+  const order = location.state;
 
   useEffect(() => {
     document.title = 'Order Details | Basket Bistro';
@@ -28,12 +30,14 @@ const OrderDetails = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error, {
+        duration: 2000,
+      });
       dispatch(clearErrors());
     }
-    if (order && order?._id !== orderId) {
-      dispatch(getOrderDetails(orderId));
-    }
+    // if (order && order?._id !== orderId) {
+    //   dispatch(getOrderDetails(orderId));
+    // }
 
     //dispatch(getOrderDetails(orderId));
   }, [dispatch, error, orderId, order]);
@@ -147,8 +151,8 @@ const OrderDetails = () => {
                   </Link>
                 </h2>
                 <p style={{ fontSize: "0.875rem", color: "#6B7280" }}>
-                  {order?.shippingInfo?.address} <br /> Karachi
-                  34000{" "}
+                  {order?.shippingInfo?.address}, <br /> Karachi
+                  {" "}
                 </p>
               </div>
             </div>
@@ -163,9 +167,9 @@ const OrderDetails = () => {
               </div>
               <div style={{ marginBottom: '0.75rem' }} className="mb-3 md:mb-0 lg:mb-0 flex flex-col">
                 <span style={{ fontWeight: 'bold', fontSize: '0.875rem', textTransform: 'uppercase', color: '#718096', display: 'block' }} className="font-bold text-sm uppercase text-gray-600 block">
-                  Invoice ID.
+                  Contact No.
                 </span>
-                <span style={{ fontSize: "0.875rem", color: "#718096", display: "block" }}>{order?._id}</span>
+                <span style={{ fontSize: "0.875rem", color: "#718096", display: "block" }}>{order?.shippingInfo?.phoneNo}</span>
               </div>
               <div style={{ display: "flex", flexDirection: "column", textAlign: "left" }}>
                 <span style={{ fontWeight: "bold", fontSize: "0.875rem", textTransform: "uppercase", color: "#718096", display: "block" }}>
@@ -324,7 +328,7 @@ const OrderDetails = () => {
           </div>
           <div style={{ borderTop: '1px solid #D1D5DB', borderBottom: '1px solid #D1D5DB', padding: '40px', backgroundColor: '#e0ffe6' }}>
             <div className={styles.priceDetails}>
-              <div style={{ marginBottom: '3px', marginRight: '0', marginBottom: '0', display: 'flex', flexDirection: 'column', flexWrap: 'wrap' }}>
+              <div style={{ marginRight: '0', marginBottom: '0', display: 'flex', flexDirection: 'column', flexWrap: 'wrap' }}>
                 <span style={{marginBottom: "0.25rem", fontWeight: 'bold', fontSize: '12px', textTransform: 'uppercase', color: '#4B5563', display: 'block' }}>
                   Payment Method
                 </span>
@@ -337,7 +341,7 @@ const OrderDetails = () => {
                   Shipping Cost
                 </span>
                 <span style={{ fontSize: '14px', color: '#6B7280', fontWeight: '600', display: 'block' }}>
-                  {order?.shippingPrice}
+                  XXX
                 </span>
               </div>
               <div style={{marginBottom: "1rem", flexDirection: "column", flexWrap: "wrap"}}>
@@ -352,8 +356,8 @@ const OrderDetails = () => {
                 <span style={{marginBottom: "0.25rem", fontWeight: "bold", fontSize: "small", textTransform: "uppercase", color: "#666", display: "block"}}>
                   Total Amount
                 </span>
-                <span style={{fontSize: "2rem", fontWeight: "bold", color: "red", display: "block"}}>
-                {(order?.orderCustomList?.length === 0 || order?.paymentInfo?.status === "Cleared") ? order?.totalPrice : "To Be Calculated"}
+                <span style={{fontSize: "2rem", fontWeight: "bold", color: "#6B7280", display: "block"}}>
+                {(order?.orderCustomList?.length === 0 || order?.paymentInfo?.status === "Cleared") ? order?.totalPrice : "Calculating..."}
                 </span>
               </div>
             </div>

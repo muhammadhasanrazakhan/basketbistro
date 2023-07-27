@@ -41,7 +41,7 @@ const Cart = ({ pd }) => {
         <img src={pd.image} alt={pd.name} />
         <span className='ms-3'>
           <h6>{pd.name}</h6>
-          <small>${pd.price}</small>
+          <small>Rs. {pd.price}</small>
           {/* <h5>{pd.price}</h5> */}
           <h5>{totalPrice ? totalPrice : pd.price}</h5>
         </span>

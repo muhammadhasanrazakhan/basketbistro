@@ -1,6 +1,8 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { useSelector } from "react-redux";
+
 import {
   newProductReducer,
   newReviewReducer,
@@ -21,6 +23,7 @@ import {
 } from "./reducers/userReducer";
 
 import { cartReducer } from "./reducers/cartReducer";
+
 import {
   allOrdersReducer,
   myOrdersReducer,
@@ -28,7 +31,13 @@ import {
   orderDetailsReducer,
   orderReducer,
 } from "./reducers/orderReducer";
-import { useSelector } from "react-redux";
+
+import {
+  allOffersReducer,
+  newOfferReducer,
+  offerDetailsReducer,
+  offerReducer,
+} from "./reducers/offerReducer";
 
 const reducer = combineReducers({
   products: productsReducer,
@@ -48,6 +57,10 @@ const reducer = combineReducers({
   order: orderReducer,
   allUsers: allUsersReducer,
   userDetails: userDetailsReducer,
+  newOffer: newOfferReducer,
+  allOffers: allOffersReducer,
+  offer: offerReducer,
+  offerDetails: offerDetailsReducer,
   // productReviews: productReviewsReducer,
   // review: reviewReducer,
 });

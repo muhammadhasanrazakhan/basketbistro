@@ -28,17 +28,23 @@ const AddAdmin = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error, {
+        duration: 2000,
+      });
       dispatch(clearErrors());
     }
 
     if (updateError) {
-      toast.error(updateError);
+      toast.error(updateError, {
+        duration: 2000,
+      });
       dispatch(clearErrors());
     }
 
     if (isUpdated) {
-    toast.success("User Updated to Admin Successfully");
+    toast.success("User Updated to Admin Successfully", {
+      duration: 2000,
+    });
       //navigate("/admin/users");
       dispatch({ type: UPDATE_USER_RESET });
     } 

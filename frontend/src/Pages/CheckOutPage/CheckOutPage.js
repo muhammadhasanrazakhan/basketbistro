@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import { saveShippingInfo, updateCartItems, updateListItems } from "../../actions/cartAction";
-import { createOrder, clearErrors, clearNewOrder } from "../../actions/orderAction";
+import { createOrder, clearErrors, clearNewOrder, clearMyOrders } from "../../actions/orderAction";
 import toast from 'react-hot-toast';
 //import useAuth from '../../hooks/useAuth';
 //import { postOrdersAsync } from '../../redux/feathers/ordersSlice';
@@ -57,7 +57,7 @@ const CheckOutPage = () => {
 
   
   const Order = {
-    shippingInfo,
+    shippingInfo: {address : address, phoneNo : phoneNo, paymentmethod : paymentmethod},
     orderItems: [],
     orderCustomList: "",
     itemsPrice: totalPrice,
@@ -111,7 +111,9 @@ const CheckOutPage = () => {
     e.preventDefault();
      
     if (Order.orderItems.length === 0 && Order.orderCustomList.length < 3) {
-      toast.error("Please select at least one checkbox.");
+      toast.error("Please select at least one checkbox", {
+        duration: 2000,
+      });
       return;
     }
 
@@ -126,22 +128,27 @@ const CheckOutPage = () => {
     );
 
     } catch (error) {
-      toast.error("An error occurred while placing the order. Please try again later.");
+      toast.error("An error occurred while placing the order. Please try again later", {
+        duration: 2000,
+      });
     }
   };
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error, {
+        duration: 10000,
+      });
       dispatch(clearErrors());
     }
 
     if (success) {
-      toast.success("Order Placed Successfully");
+      toast.success("Order Placed Successfully", {
+        duration: 2000,
+      });
 
       const newCartItems = [];
       const newListItems = "";
-      console.log(order)
       if (order?.order?.orderItems?.length !== 0) {
         dispatch(updateCartItems(newCartItems))
       }
@@ -149,7 +156,8 @@ const CheckOutPage = () => {
         dispatch(updateListItems(newListItems))
       }  
       dispatch(clearNewOrder());
-      navigate('/dashboard/my-orders'); 
+      dispatch(clearMyOrders());
+      navigate('/home'); 
     }
   }, [dispatch, error, success, loading, alert]);
 
@@ -322,13 +330,14 @@ const CheckOutPage = () => {
                 )}
                 <ul className={styles.total__cost}>
                   <li>
-                    <span>Subtotal</span> <span>{listItems.length > 3 ? "To be calculated" : `$${totalPrice}.00`}</span>
+                    <span>Subtotal</span> <span>{listItems.length > 3 ? "Calculating..." : `Rs. ${totalPrice}.00`}</span>
                   </li>
                   <li>
-                    <span>Shipping Cost</span> <span>${shipping}.00</span>
+                    <span>Shipping Cost</span> <span>Rs. XXX.XX</span>
                   </li>
                   <li>
-                    <span>TOTAL COST</span> <span>{listItems.length > 3 ? "To be calculated" : `$${total}.00`}</span>
+                    {/* <span>TOTAL COST</span> <span>{listItems.length > 3 ? "Calculating..." : `Rs. ${total}.00`}</span> */}
+                    <span>TOTAL COST</span> <span>Calculating...</span>
                   </li>
                 </ul>
               </div>

@@ -68,10 +68,12 @@ app.use(fileUpload());
 const product = require("./routes/productRoute");
 const user = require("./routes/userRoute");
 const order = require("./routes/orderRoute");
+const offer = require("./routes/offerRoute");
 
 app.use("/api/bb", product);
 app.use("/api/bb", user);
 app.use("/api/bb", order);
+app.use("/api/bb", offer);
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 app.get('*', (req, res) => {

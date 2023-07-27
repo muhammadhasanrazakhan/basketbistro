@@ -47,4 +47,24 @@
     margin-right: 0;
     display: block;
   }
+
+  #daily__needs .daily__needs__content h5 {
+    text-align: center;
+  }
+
+  #daily__needs .daily__needs__content p {
+    text-align: center;
+  }
+
+  #daily__needs .daily__needs__content img {
+    width: 40%;
+    margin: 20px 0px;
+  }
+
+  #daily__needs .daily__needs__content span {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
 }

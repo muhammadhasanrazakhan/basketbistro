@@ -33,8 +33,8 @@ import styles from './Categories.module.css';
 const categories = [
   {
     id: 1,
-    name: 'Fish & Meat',
-    linkName: 'FishandMeat',
+    name: 'Chicken & Meat',
+    linkName: 'ChickenandMeat',
     images: fish,
   },
   {

@@ -23,7 +23,9 @@ const Products = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error, {
+        duration: 2000,
+      });
       dispatch(clearErrors());
     }
     if (products?.length === 0) {

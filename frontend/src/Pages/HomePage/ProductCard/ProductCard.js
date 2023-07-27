@@ -42,7 +42,9 @@ const ProductCard = ({ product }) => {
   
   const addToCartHandler = () => {
     dispatch(addItemsToCart(_id, name, price, images[0].url, Stock, quantity));
-    toast.success("Item Added To Cart");
+    toast.success("Item Added To Cart", {
+      duration: 1000,
+    });
   };
 
   // useEffect(() => {
@@ -63,7 +65,7 @@ const ProductCard = ({ product }) => {
       <div className={styles.card__content}>
         <h6>{name}</h6>
         <span className='d-flex justify-content-between align-self-center mt-3'>
-          <h4> ${price}</h4>
+          <h4> Rs. {price}</h4>
           {/* {Cart ? (
               <div>
                 <div className="h-9 w-auto flex flex-wrap items-center justify-evenly py-1 px-2 bg-emerald-500 text-white rounded">

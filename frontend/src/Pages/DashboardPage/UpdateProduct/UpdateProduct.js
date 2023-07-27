@@ -28,12 +28,16 @@ const UpdateProduct = () => {
   const navigate  = useNavigate()
   const match = useMatch('/dashboard/update-product/:id');
 
+  const { products } = useSelector((state) => state.products);
   const { error, product } = useSelector((state) => state.productDetails);
   const {
     loading,
     error: updateError,
     isUpdated,
   } = useSelector((state) => state.product);
+
+  const productId = match.params.id;
+  const specificProduct = products.find((product) => product._id === productId);
 
   const [name, setName] = useState("");
   const [rate, setRate] = useState(0);
@@ -48,8 +52,8 @@ const UpdateProduct = () => {
   const categories = [
     {
       id: 1,
-      name: 'Fish & Meat',
-      linkName: 'FishandMeat',
+      name: 'Chicken & Meat',
+      linkName: 'ChickenandMeat',
     },
     {
       id: 2,
@@ -84,7 +88,6 @@ const UpdateProduct = () => {
   ];
 
 
-  const productId = match.params.id;
 
   const handleImageUpload = (e) => {
       const file = e.target.files[0];
@@ -147,41 +150,39 @@ const UpdateProduct = () => {
   };
 
   useEffect(() => {
-    if (product && product._id !== productId) {
+    if (products?.length === 0) {
       dispatch(getProductDetails(productId));
     } else {
-      setName(product.name);
-      setDescription(product.description);
-      setRate(product.price);
-      setCat(product.category);
-      setStock(product.Stock);
-      setOldImages(product.images);
+      setName(specificProduct?.name);
+      setDescription(specificProduct?.description);
+      setRate(specificProduct?.price);
+      setCat(specificProduct?.category);
+      setStock(specificProduct?.Stock);
+      setOldImages(specificProduct?.images);
       //setProductImg(product.images);
     }
     if (error) {
-      toast.error(error);
+      toast.error(error, {
+        duration: 2000,
+      });
       dispatch(clearErrors());
     }
 
     if (updateError) {
-      toast.error(updateError);
+      toast.error(updateError, {
+        duration: 2000,
+      });
       dispatch(clearErrors());
     }
 
     if (isUpdated) {
-      toast.success("Product Updated Successfully");
+      toast.success("Product Updated Successfully", {
+        duration: 2000,
+      });
       navigate("/dashboard/manage-products");
       dispatch({ type: UPDATE_PRODUCT_RESET });
     }
-  }, [
-    dispatch,
-    alert,
-    error,
-    isUpdated,
-    productId,
-    product,
-    updateError,
-  ]);
+  }, [dispatch, alert, error, isUpdated, productId, specificProduct, product, updateError]);
 
 
   const handelBlur = (e) => {
@@ -200,14 +201,8 @@ const UpdateProduct = () => {
     myForm.set("description", description);
     myForm.set("category", cat);
     myForm.set("Stock", Stock);
-    
-    if (productImg) {
-      myForm.set("images", productImg);
-    }
 
     dispatch(updateProduct(productId, myForm));
-    dispatch(getProductDetails(productId));
-
   };
 
 

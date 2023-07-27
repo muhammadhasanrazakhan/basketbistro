@@ -57,7 +57,9 @@ const Loginuser = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error, {
+        duration: 2000, // Set the duration (in milliseconds)
+      });
       dispatch(clearErrors());
     }
 

@@ -11,7 +11,7 @@ import Testimonials from '../Testimonials/Testimonials';
 
 const Home = () => {
   useEffect(() => {
-    document.title = 'Home | Kacha Bazar';
+    document.title = 'Home | Basket Bistro';
     window.scrollTo({
       top: 0,
     });

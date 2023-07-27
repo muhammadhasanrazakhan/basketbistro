@@ -1,0 +1,381 @@
+#offer__container {
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.mainHeading {
+  text-align: center;
+  margin-top: 40px;  
+}
+
+.offerBox {
+  width: 100%;
+  min-height: 300px;
+  max-height: max-content;
+  object-fit: cover;
+  /* background-color: antiquewhite; */
+  background: linear-gradient(to right, #FFFCEE, #FFF9D9);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.adjustmentdiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.offerImage {
+  min-width: 25%;
+  max-width: 25%;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(to right, #ff9800, #ff5722);
+  align-self: center;
+  display: flex;
+}
+
+.offerImage span {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff5722; /* Fallback color for older browsers */
+  background: -webkit-linear-gradient(45deg, #f44336, #9c27b0, #3f51b5, #03a9f4, #8bc34a, #f44336);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  align-self: center;
+  font-family: 'Your-Unique-Font', sans-serif;
+}
+
+.offerBox img {
+  width: 25%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 2px #1f2937;
+}
+
+.offerContent {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  text-align: center;
+  align-content: center;
+  justify-self: center;
+}
+
+.offerBox h4 {
+  font-size: 30px;
+  font-weight: 600;
+  color: #383633;
+  line-height: 18px;
+  text-align: center;
+}
+
+.inactivestatusBoxText {
+  font-size: 14px;
+  color: red;
+  margin-top: 12px;
+  line-height: 14px;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.activestatusBoxText {
+  font-size: 14px;
+  color: green;
+  margin-top: 12px;
+  line-height: 14px;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.offerDiscription {
+  font-size: 14px;
+  color: #4b5563;
+  text-align: center;
+  /* display: -webkit-box;
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+  line-height: 18px;
+}
+
+.separator {
+  width: 80%;
+  height: 1px;
+  background-color: #4b5533;
+  margin-top: 25px;
+  margin-bottom: 12px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.statusTimeText {
+  font-size: 16px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.buttonDiv {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  justify-content: center;
+}
+
+.inactiveofferButton {
+  width: 60%;
+  height: 45px;
+  border-width: 1px; 
+  border-radius: 10px;
+  border-style: dashed;
+  background-color: #EAFFE4;
+  border-color: green;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.activeofferButton {
+  width: 60%;
+  height: 45px;
+  border-width: 1px; 
+  border-radius: 10px;
+  border-style: dashed;
+  background-color: #E0AD99;
+  border-color: red;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.inactiveinstruction {
+  width: 100%;
+  font-size: 12px;
+  color: green;
+  text-align: center;
+  transform: translateY(1.5px);
+}
+
+.activeinstruction {
+  width: 100%;
+  font-size: 12px;
+  color: red;
+  text-align: center;
+  transform: translateY(1.5px);
+}
+
+@media only screen and (max-width: 1200px) {
+  .offerBox img {
+    height: 115px;
+  }
+
+  .offerImage {
+    min-width: 25%;
+    max-width: 25%;
+    height: 115px;
+  }
+  
+  .offerImage span {
+    font-size: 17px;
+  }
+
+  .inactivestatusBoxText {
+    font-size: 14px;
+    color: red;
+    margin-top: 5px;
+    line-height: 14px;
+    margin-bottom: 16px;
+  }
+
+  .activestatusBoxText {
+    font-size: 14px;
+    color: green;
+    margin-top: 5px;
+    line-height: 14px;
+    margin-bottom: 16px;
+  }
+} 
+
+@media only screen and (max-width: 991px) {
+  #offer__container {
+    margin: 40px auto;
+    gap: 15px;
+  }
+
+  .offerBox {
+    height: 280px;
+    padding: 7px;
+  }
+
+  .offerImage {
+    min-width: 25%;
+    max-width: 25%;
+    height: 100px;
+  }
+  
+  .offerImage span {
+    font-size: 14px;
+  }
+
+
+  .offerBox img {
+    width: 28%;
+    height: 100px;
+  }
+  
+  .offerContent {
+    margin-top: 15px;
+    margin-bottom: 0px;
+    margin-left: 6px;
+  }
+  
+  .offerBox h4 {
+    font-size: 22px;
+    line-height: 15px;
+  }
+  
+  .inactivestatusBoxText {
+    font-size: 12px;
+    line-height: 12px;
+    margin-bottom: 14px;
+  }
+
+  .activestatusBoxText {
+    font-size: 12px;
+    line-height: 12px;
+    margin-bottom: 14px;
+  }
+
+  .offerDiscription {
+    font-size: 12px;
+    color: #4b5563;
+    line-height: 13px;
+  }
+
+  .statusTimeText {
+    font-size: 14px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  
+  .inactiveofferButton {
+    height: 40px;
+  }
+
+  .activeofferButton {
+    height: 40px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #offer__container {
+    margin: 20px auto;
+    display: flex;    
+    flex-direction: column;
+  }
+
+  .offerImage {
+    min-width: 25%;
+    max-width: 25%;
+    height: 110px;
+  }
+  
+  .offerImage span {
+    font-size: 16px;
+  }
+
+  .offerBox img {
+    width: 25%;
+    height: 110px;
+  }
+
+  .offerContent {
+    margin-top: 15px;
+    margin-left: 10px;
+  }
+
+  .offerBox h4 {
+    font-size: 24px;
+  }
+  
+  .inactivestatusBoxText {
+    font-size: 13px;
+    line-height: 13px;
+    margin-bottom: 16px;
+  }
+
+  .activestatusBoxText {
+    font-size: 13px;
+    line-height: 13px;
+    margin-bottom: 16px;
+  }
+
+  .offerDiscription {
+    font-size: 13px;
+    line-height: 15px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .offerBox {
+    height: fit-content;
+  }
+
+  .adjustmentdiv {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .offerBox img {
+    width: 25%;
+    height: 90px;
+    align-self: center;
+  }
+
+  .offerContent {
+    margin-top: 20px;
+    margin-left: 0px;
+  }
+  
+  .offerBox h4 {
+    font-size: 23px;
+    line-height: 18px;
+    text-align: center;
+  }
+  
+  .inactivestatusBoxText {
+    font-size: 13px;
+    line-height: 13px;
+    margin-bottom: 13px;
+    text-align: center;
+  }
+
+  .activestatusBoxText {
+    font-size: 13px;
+    line-height: 13px;
+    margin-bottom: 13px;
+    text-align: center;
+  }
+
+  .offerDiscription {
+    font-size: 13px;
+    line-height: 15px;
+    text-align: center;
+  }
+}  
+
+@media only screen and (max-width: 330px) {
+  .offerBox img {
+    width: 26%;
+    height: 85px;
+    align-self: center;
+  }
+}  

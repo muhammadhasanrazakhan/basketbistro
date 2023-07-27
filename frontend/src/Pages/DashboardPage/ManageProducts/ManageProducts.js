@@ -36,19 +36,26 @@ const ManageProducts = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error, {
+        duration: 2000,
+      });
       dispatch(clearErrors());
     }
 
     if (deleteError) {
-      toast.error(deleteError);
+      toast.error(deleteError, {
+        duration: 2000,
+      });
       dispatch(clearErrors());
     }
 
     if (isDeleted) {
-      toast.success("Product Deleted Successfully");
+      toast.success("Product Deleted Successfully", {
+        duration: 2000,
+      });
       //navigate("/admin/dashboard");
       dispatch({ type: DELETE_PRODUCT_RESET });
+      dispatch(getAdminProduct());
     }
     if (products?.length === 0) {
     dispatch(getAdminProduct());
@@ -88,6 +95,7 @@ const ManageProducts = () => {
                     <th>Price</th>
                     <th>Edit</th>
                     <th>Delete</th>
+                    <th>Date</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -107,6 +115,7 @@ const ManageProducts = () => {
                           <FontAwesomeIcon icon={faTrashAlt} className={styles.delete__icon} />
                         </span>
                       </td>
+                      <td style={{whiteSpace:"nowrap"}}>&nbsp;{product.createdAt.slice(0,10)}&nbsp;</td>
                     </tr>
                   ))}
                 </tbody>

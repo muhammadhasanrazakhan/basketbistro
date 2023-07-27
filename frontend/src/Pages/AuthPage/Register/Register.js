@@ -85,7 +85,9 @@ const Register = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error, {
+        duration: 2000,
+      });
       //alert(error);
       dispatch(clearErrors());
     }

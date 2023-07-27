@@ -1,4 +1,4 @@
-import { faClipboardList, faHome, faPlus, faQuoteLeft, faSignOutAlt, faTasks, faUser, faUserPlus, faUserTie } from '@fortawesome/free-solid-svg-icons';
+import { faClipboardList, faHome, faPlus, faQuoteLeft, faSignOutAlt, faTasks, faUser, faUserPlus, faUserTie, faGift, faCircleDollarToSlot, faListCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -16,7 +16,9 @@ const Dashboard = () => {
 
   const signOut = () => {
     dispatch(logout());
-    toast.success("Logout Successfully");
+    toast.success("Logout Successfully", {
+      duration: 2000,
+    });
   };
 
   useEffect(() => {
@@ -62,17 +64,23 @@ const Dashboard = () => {
                       </span>
                       Add Product
                     </NavLink>
-                    <NavLink to='/dashboard/manage-orders' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    <NavLink to='/dashboard/create-offer' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <span>
-                        <FontAwesomeIcon icon={faClipboardList} />
+                        <FontAwesomeIcon icon={faGift} />
                       </span>
-                      Manage Orders
+                      Create Offer
                     </NavLink>
                     <NavLink to='/dashboard/make-admin' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <span>
                         <FontAwesomeIcon icon={faUserPlus} />
                       </span>
                       Add Admin
+                    </NavLink>
+                    <NavLink to='/dashboard/manage-orders' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                      <span>
+                        <FontAwesomeIcon icon={faListCheck} />
+                      </span>
+                      Manage Orders
                     </NavLink>
                     <NavLink to='/dashboard/manage-products' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       <span>
@@ -86,6 +94,13 @@ const Dashboard = () => {
                       </span>
                       Manage Users
                     </NavLink>
+                    <NavLink to='/dashboard/manage-offers' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                      <span>
+                        <FontAwesomeIcon icon={faCircleDollarToSlot} />
+                      </span>
+                      Manage Offers
+                    </NavLink>
+
                   </>
                 )}
 

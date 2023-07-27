@@ -46,10 +46,111 @@
   margin-top: 15px;
 }
 
-.banner .banner__side img {
+.banner__img {
+  width: 100%;
+  height: 140px;
+}
+
+/* .banner__side {
+  display: none;
+} */
+
+.offerBox {
   width: 100%;
   height: 140px;
   object-fit: cover;
+  /* background-color: antiquewhite; */
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(to right, #FFFCEE, #FFF9D9);
+}
+
+.offerBox img {
+  width: 20%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 2px #1f2937;
+}
+
+.offerContent {
+  width: 70%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 13px;
+  margin-right: 0px;
+}
+
+.offerBox h4 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #383633;
+  line-height: 18px;
+}
+
+.statusBox {
+  width: 80px;
+  height: 22px;
+  border-width: 1px; /* Add border-width to show the border */
+  border-radius: 15px;
+  background-color: #269900;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.statusBoxText {
+  font-size: 12px;
+  color: #993000;
+  margin-top: 0px;
+  margin-bottom: 15px;
+  color: #4b5563;
+  /* text-align: center;
+  transform: translateY(1.5px); */
+}
+
+.offerDiscription {
+  font-size: 14px;
+  color: #4b5563;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limit to two lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 18px;
+}
+
+.separator {
+  width: 1px;
+  height: 90%;
+  background-color: #4b5533;
+  align-self: center;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.buttonDiv {
+  width: 22%;
+}
+
+.offerButton {
+  width: 100px;
+  height: 40px;
+  border-width: 1px; 
+  border-radius: 10px;
+  border-style: dashed;
+  background-color: #E0AD99;
+  border-color: red;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.instruction {
+  width: 100px;
+  font-size: 12px;
+  color: red;
+  text-align: center;
+  transform: translateY(1.5px);
 }
 
 @media only screen and (max-width: 1300px) {
@@ -72,6 +173,58 @@
     padding: 5px 15px;
     margin-top: 6px;
   }
+
+  .offerBox img {
+    width: 23%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .offerBox img {
+    width: 27%;
+  }
+
+  .offerContent {
+    width: 75%;
+    margin-left: 10px;
+  }
+
+  .offerBox h4 {
+    font-size: 20px;
+    line-height: 16px;
+  }
+
+  .statusBoxText {
+    font-size: 11px;
+  }
+
+  .offerDiscription {
+    font-size: 12px;
+    line-height: 17px;
+  }
+
+  .separator {
+    width: 1px;
+    height: 90%;
+    background-color: #4b5533;
+    align-self: center;
+    margin-left: 5px;
+    margin-right: 15px;
+  }
+
+  .buttonDiv {
+    width: 20%;
+  }
+
+  .offerButton {
+    width: 90px;
+    height: 35px;
+  }
+  
+  .instruction {
+    width: 90px;
+    font-size: 11px;
+  }
 }
 
 @media only screen and (max-width: 991px) {
@@ -83,8 +236,39 @@
     height: auto;
   }
 
-  .banner .carousel__item img {
-    height: 100%;
+  .offerDiscription {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .offerBox img {
+    width: 22%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .banner__img {
+    height: 110px;
+  }
+  
+  .offerBox {
+    height: 110px;
+    padding: 5px;
+  }
+
+  .offerBox img {
+    width: 20%;
+    height: 100px;
+  }
+
+  .offerDiscription {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to two lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 11px;
+    line-height: 16px;
   }
 }
 
@@ -108,9 +292,106 @@
     margin-top: 15px;
   }
 
-  .banner .banner__side img {
-    object-fit: contain;
-    height: 110px;
+  .banner__img {
+    height: 100px;
+  }
+  
+  .offerBox {
+    height: 100px;
+    padding: 5px;
+  }
+
+  .offerBox img {
+    width: 20%;
+    height: 90px;
+  }
+
+  .statusBoxText {
+    color: #993000;
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+  
+  .buttonDiv {
+    width: 20%;
+  }
+
+  .offerButton {
+    width: 90px;
+    height: 33px;
+    margin-top: 5px;
+    margin-bottom: 8px;
+  }
+  
+  .instruction {
+    width: 90px;
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .banner__img {
+    display: none;
+    height: 80px;
     border-radius: 5px;
+  }
+
+  .offerBox {
+    height: 80px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  .offerBox img {
+    height: 70px;
+  }
+
+  .offerContent {
+    width: 80%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 8px;
+    margin-right: 0px;
+  }
+
+  .offerBox h4 {
+    font-size: 16px;
+    line-height: 10px;
+  }
+
+  .offerDiscription {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .separator {
+    display: none;
+  }
+  
+  .buttonDiv {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .offerBox img {
+    height: 60px;
+    display: flex;
+    align-self: center;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .banner__img {
+    height: 75px;
+  }
+
+  .offerBox {
+    height: 75px;
+  }
+
+  .statusBoxText {
+    margin-bottom: 6px;
   }
 }

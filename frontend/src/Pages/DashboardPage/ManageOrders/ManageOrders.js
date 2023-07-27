@@ -53,30 +53,43 @@ const ManageOrders = () => {
 
   useEffect(() => {
   if (error) {
-    toast.error(error);
+    toast.error(error, {
+      duration: 2000,
+    });
     dispatch(clearErrors());
   }
 
   if (deleteError) {
-    toast.error(deleteError);
+    toast.error(deleteError, {
+      duration: 2000,
+    });
     dispatch(clearErrors());
   }
   if (isDeleted) {
-    toast.success("Order Deleted Successfully");
+    toast.success("Order Deleted Successfully", {
+      duration: 2000,
+    });
     // navigate("/admin/orders");
     dispatch({ type: DELETE_ORDER_RESET });
+    dispatch(getAllOrders());
   }
 
   if (updateError) {
-    toast.error(updateError);
+    toast.error(updateError, {
+      duration: 2000,
+    });
     dispatch(clearErrors());
   }
   if (isUpdated) {
-    toast.success("Order Updated Successfully");
+    toast.success("Order Updated Successfully", {
+      duration: 2000,
+    });
     dispatch({ type: UPDATE_ORDER_RESET });
   }
   if (isPaymentUpdated) {
-    toast.success("Payment Updated Successfully");
+    toast.success("Payment Updated Successfully", {
+      duration: 2000,
+    });
     dispatch({ type: UPDATE_ORDER_PAYMENT_RESET });
   }
   if (orders?.length === 0) {
@@ -154,7 +167,7 @@ const ManageOrders = () => {
                 </svg>
               </span>
               <h6>Your Customers Don't Order Any Product</h6>
-              <p>Please tell your customers add product to Their Order list.</p>
+              <p>Please tell your customers add product to their Order list.</p>
             </div>
           ) : (
             <>
@@ -163,10 +176,11 @@ const ManageOrders = () => {
                   <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Delete</th>
-                    <th>Action</th>
-                    <th>Shipping Status</th>
+                    <th>Details</th>
+                    <th>Delete</th> 
+                   <th>Shipping Status</th>
                     <th>Payment Status</th>
+                    <th>Date</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -176,7 +190,7 @@ const ManageOrders = () => {
                       <td>&nbsp;{idx + 1}&nbsp;</td>
                       <td style={{whiteSpace:"nowrap"}}>&nbsp;{order.user.name}&nbsp;</td>
                       <td>
-                      <Link to={`/orderdetails/${order._id}`}>
+                      <Link to={`/orderdetails/${order._id}`} state={order}>
                       &nbsp;Details&nbsp;
                       </Link>
                       </td>
@@ -221,6 +235,7 @@ const ManageOrders = () => {
                           </option>
                         </select>
                       </td>
+                      <td style={{whiteSpace:"nowrap"}}>&nbsp;{order.createdAt.slice(0,10)}&nbsp;</td>
                     </tr>
                   ))}
                 </tbody>

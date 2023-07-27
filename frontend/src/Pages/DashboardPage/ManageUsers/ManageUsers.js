@@ -22,7 +22,9 @@ const ManageUsers = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error, {
+        duration: 2000,
+      });
       dispatch(clearErrors());
     }
 
@@ -59,8 +61,11 @@ const ManageUsers = () => {
                   <tr>
                     <th>#</th>
                     <th>Name</th>
+                    <th>Contact</th>
                     <th>Email</th>
-                    <th>Total Shopping</th>
+                    <th style={{whiteSpace:"nowrap"}}>Total Shopping</th>
+                    <th style={{whiteSpace:"nowrap"}}>Active Offers REF</th>
+                    <th>Date</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -68,8 +73,11 @@ const ManageUsers = () => {
                     <tr key={user._id}>
                       <td className='fw-bold'>&nbsp;{idx + 1}&nbsp;</td>
                       <td style={{whiteSpace:"nowrap"}}>&nbsp;{user.name}&nbsp;</td>
+                      <td style={{whiteSpace:"nowrap"}}>&nbsp;{user?.lastPhoneNumber}&nbsp;</td>
                       <td style={{whiteSpace:"nowrap"}}>&nbsp;{user.email}&nbsp;</td>
-                      <td>&nbsp;{user.totalshoppings}&nbsp;</td>
+                      <td style={{whiteSpace:"nowrap"}}>&nbsp;{user.totalshoppings}&nbsp;</td>
+                      <td style={{whiteSpace:"nowrap"}}>&nbsp;{user.activeOffers.map((offer) => offer.ref).join(", ")}&nbsp;</td>
+                      <td style={{whiteSpace:"nowrap"}}>&nbsp;{user.createdAt.slice(0,10)}&nbsp;</td>
                     </tr>
                   ))}
                 </tbody>

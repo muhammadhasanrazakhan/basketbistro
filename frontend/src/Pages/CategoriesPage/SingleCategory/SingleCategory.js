@@ -9,7 +9,7 @@ import ProductCard from '../../HomePage/ProductCard/ProductCard';
 import LoadingSpinner from '../../SharedComponents/LoadingSpinner/LoadingSpinner';
 import styles from './SingleCategory.module.css';
 
-const categorylist = ['FishandMeat','FruitsandVegetable','MilkandDairy','Grocery','SoupandDetergents','BabyCareandBeauty','Pharmacy'];
+const categorylist = ['ChickenandMeat','FruitsandVegetable','MilkandDairy','Grocery','SoupandDetergents','BabyCareandBeauty','Pharmacy'];
 
 const SingleCategory = () => {
   const dispatch = useDispatch();
@@ -18,6 +18,7 @@ const SingleCategory = () => {
   const {error, loading, products, filteredProductsCount} = useSelector((state) => state.products);
   const [productsCount, setProductsCount] = useState();
   const [Products, setProducts] = useState([]);
+  const [filtering, setFiltering] = useState(false);
 
   let filtered_Products;
   let keyword;
@@ -41,7 +42,7 @@ const SingleCategory = () => {
 
   const filterProducts = (products, keyword1, category1) => {
     let filteredProducts1 = [...products];
-  
+    setFiltering(true)
     // Perform filtering based on query parameters
     if (keyword1 !== "") {
       const keyword2 = keyword1.toLowerCase();
@@ -56,17 +57,21 @@ const SingleCategory = () => {
     }
     setProductsCount(filteredProducts1.length)
     setProducts(filteredProducts1)
+    setFiltering(false)
     return filteredProducts1;
   }
 
   useEffect(() => {
     if (error) {
-      toast.error(error);
+      toast.error(error, {
+        duration: 2000,
+      });
       dispatch(clearErrors());
     }
     filtered_Products = filterProducts(products, keyword, category);
-    console.log(filtered_Products)
-    //dispatch(getProduct( keyword, currentPage, price, category, ratings));
+    if (products?.length === 0) {
+      dispatch(getProduct());
+    }
   }, [dispatch, keyword, currentPage, price, category, ratings, error, filtered_Products]);
 
   useEffect(() => {
@@ -77,7 +82,7 @@ const SingleCategory = () => {
 
   return (
     <Container>
-      {loading ? (
+      {(loading || filtering) ? (
         <div className='mt-5 pt-5'>
           <LoadingSpinner />
         </div>

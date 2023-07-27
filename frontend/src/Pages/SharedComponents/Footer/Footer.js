@@ -26,31 +26,31 @@ const Footer = () => {
                     <FontAwesomeIcon icon={faFacebook} />
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a href='https://twitter.com' target='_blank' rel='noopener noreferrer'>
                     <FontAwesomeIcon icon={faTwitter} />
                   </a>
-                </li>
+                </li> */}
                 <li>
                   <a href='https://www.instagram.com/' target='_blank' rel='noopener noreferrer'>
                     <FontAwesomeIcon icon={faInstagram} />
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a href='https://www.linkedin.com/in/' target='_blank' rel='noopener noreferrer'>
                     <FontAwesomeIcon icon={faLinkedin} />
                   </a>
-                </li>
+                </li> */}
                 <li>
-                  <a href='https://wa.me/923104725572?text=hello%20%2C%0A'>
+                  <a href='https://wa.me/923104725572?text=hello%2C%20I%20have%20visited%20your%20website...%0A'>
                     <FontAwesomeIcon icon={faWhatsapp} />
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a href='https://github.com' target='_blank' rel='noopener noreferrer'>
                     <FontAwesomeIcon icon={faGithub} />
                   </a>
-                </li>
+                </li> */}
               </ul>
             </Col>
              <Col lg={2} md={4} sm={6} xs={6} className={styles.temp__column}>
@@ -117,13 +117,13 @@ const Footer = () => {
         </Container>
       </footer>
       <section id={styles.copyright__area} className='container'>
-        <small>
-          Copyright 2023 @
-          <a target='_blank' rel='noopener noreferrer' className='mx-1'>
-            HasanRaza
-          </a>
-          , All rights reserved.
-        </small>
+      <small>
+        &copy; {new Date().getFullYear()}{' '}
+        <a target='_blank' rel='noopener noreferrer' className='mx-1'>
+          HasanRaza
+        </a>
+        , All rights reserved.
+      </small>
         {/* <img src={paymentLogo} alt='paymentLogo' /> */}
       </section>
     </>

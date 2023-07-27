@@ -32,7 +32,9 @@ const ProfileDetails = ({comefrom}) => {
 
   const signOut = () => {
     dispatch(logout());
-    toast.success("Logout Successfully");
+    toast.success("Logout Successfully", {
+      duration: 2000,
+    });
     //logOut();
     //dispatch(emptyCart());
   };

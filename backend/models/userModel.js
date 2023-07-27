@@ -23,6 +23,9 @@ const userSchema = new mongoose.Schema({
     minLength: [8, "Password should be greater than 8 characters"],
     select: false,
   },
+  lastPhoneNumber: {
+    type: Number,
+  },
   avatar: {
     public_id: {
       type: String,
@@ -41,6 +44,20 @@ const userSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  activeOffers : [
+    {
+    _id : {
+      type: mongoose.Schema.ObjectId,
+      ref: "Offer",
+    },
+    title : {
+      type: String,
+    },
+    ref : {
+      type: Number,
+    },
+    },
+  ],  
   createdAt: {
     type: Date,
     default: Date.now,

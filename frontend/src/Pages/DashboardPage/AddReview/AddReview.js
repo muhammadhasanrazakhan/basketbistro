@@ -67,12 +67,16 @@ const AddReview = () => {
   useEffect(() => {
 
     if (reviewError) {
-      toast.error(reviewError);
+      toast.error(reviewError, {
+        duration: 2000,
+      });
       dispatch(clearErrors());
     }
 
     if (success) {
-      toast.success("Review Submitted Successfully");
+      toast.success("Review Submitted Successfully", {
+        duration: 2000,
+      });
       dispatch({ type: NEW_USER_REVIEW_RESET });
     }
 

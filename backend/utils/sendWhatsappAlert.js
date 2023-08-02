@@ -7,7 +7,7 @@ const sendWhatsappAlert = async (message) => {
         const sentMessage = await client.messages.create({
             body: message,
             from: 'whatsapp:+14155238886',
-            to: 'whatsapp:+923111841622'
+            to: 'whatsapp:+923104725572'
         });
         console.log(sentMessage.sid);
     } catch (error) {

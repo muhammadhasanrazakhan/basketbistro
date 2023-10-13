@@ -155,12 +155,12 @@ const Register = () => {
             </span>
             <span className={styles.inputs}>
               <input
-                type='email'
+                type='text'
                 name='email'
                 id='email2'
                 autoComplete='new-password'
                 spellCheck='false'
-                placeholder='Enter Your Email Address'
+                placeholder='Enter Your Email or Phone Number'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required

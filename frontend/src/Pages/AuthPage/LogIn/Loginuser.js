@@ -102,12 +102,12 @@ const Loginuser = () => {
           <form onSubmit={loginSubmit}>
             <span className={styles.inputs}>
               <input 
-                type='email' 
+                type='text' 
                 name='email' 
                 id='email' 
                 autoComplete='off' 
                 spellCheck='false' 
-                placeholder='Enter Your Email Address' 
+                placeholder='Enter Your Email or Phone Number' 
                 required 
                 value={loginEmail}
                 onChange={(e) => setLoginEmail(e.target.value)}  

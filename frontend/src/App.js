@@ -45,6 +45,8 @@ import TermsAndCondition from './Pages/TermsAndConditionPage/TermsAndCondition';
 import store from "./store";
 import { loadUser } from "./actions/userAction";
 
+//"proxy": "http://154.81.253.228:4000",
+
 
 // const Home = lazy(() => import('./Pages/HomePage/Home/Home'));
 // const Loginuser = lazy(() => import('./Pages/AuthPage/LogIn/Loginuser'));

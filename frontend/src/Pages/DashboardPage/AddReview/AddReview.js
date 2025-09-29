@@ -94,7 +94,7 @@ const AddReview = () => {
                   type='email'
                   id='reviewEmail'
                   name='email'
-                  value={user.email}
+                  value={user?.email}
                   readOnly
                 />
                 <label htmlFor='reviewEmail'>

@@ -41,7 +41,7 @@ const SingleCategory = () => {
   // alert(category)
 
   const filterProducts = (products, keyword1, category1) => {
-    let filteredProducts1 = [...products];
+    let filteredProducts1 = [...(products || [])];
     setFiltering(true)
     // Perform filtering based on query parameters
     if (keyword1 !== "") {
@@ -68,7 +68,7 @@ const SingleCategory = () => {
       });
       dispatch(clearErrors());
     }
-    filtered_Products = filterProducts(products, keyword, category);
+    filtered_Products = filterProducts(products || [], keyword, category);
     if (products?.length === 0) {
       dispatch(getProduct());
     }

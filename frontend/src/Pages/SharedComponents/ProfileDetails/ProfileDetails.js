@@ -41,7 +41,7 @@ const ProfileDetails = ({comefrom}) => {
 
   return (
     <div ref={ref}>
-      <img style={{ width: '47px', height: '45px', borderRadius: '50%'}} onClick={handleClick} src={profile} alt={user.name} />
+      <img style={{ width: '47px', height: '45px', borderRadius: '50%'}} onClick={handleClick} src={profile} alt={user?.name} />
 
       <Overlay show={show} target={target} placement='bottom' container={ref}>
         <Popover id='popover-contained' className={styles.profile__body}>

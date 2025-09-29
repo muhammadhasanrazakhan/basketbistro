@@ -208,11 +208,11 @@ const CheckOutPage = () => {
                   <Row className='g-4'>
                     <Col lg={6}>
                       <label htmlFor='userName'>Your Name</label>
-                      <input type='text' name='name' id='userName' value={user.name} readOnly />
+                      <input type='text' name='name' id='userName' value={user?.name} readOnly />
                     </Col>
                     <Col lg={6}>
                       <label htmlFor='userEmail'>Email Address</label>
-                      <input type='email' name='email' id='userEmail' value={user.email} readOnly />
+                      <input type='email' name='email' id='userEmail' value={user?.email} readOnly />
                     </Col>
                     {/* <Col lg={6}>
                       <label htmlFor='loginTime'>Last Login Time</label>

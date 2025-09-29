@@ -63,7 +63,7 @@ const CustomList = () => {
                   type='text'
                   id='reviewEmail'
                   name='email'
-                  value={user.name}
+                  value={user?.name}
                   readOnly
                 />
                 <label htmlFor='reviewEmail'>
